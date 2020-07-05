@@ -1,0 +1,268 @@
+%%
+%% This is file `sample-authordraft.tex',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%% v
+%% samples.dtx  (with options: `authordraft')
+%% 
+%% IMPORTANT NOTICE:
+%% 
+%% For the copyright see the source file.
+%% 
+%% Any modified versions of this file must be renamed
+%% with new filenames distinct from sample-authordraft.tex.
+%% 
+%% For distribution of the original source see the terms
+%% for copying and modification in the file samples.dtx.
+%% 
+%% This generated file may be distributed as long as the
+%% original source files, as listed above, are part of the
+%% same distribution. (The sources need not necessarily be
+%% in the same archive or directory.)
+%%
+%% The first command in your LaTeX source must be the \documentclass command.
+
+% \documentclass[sigconf,authordraft]{acmart}
+\documentclass[sigconf,nonacm]{acmart}
+
+\usepackage[portuges]{babel}
+%%
+%% \BibTeX command to typeset BibTeX logo in the docs
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+%% Rights management information.  This information is sent to you
+%% when you complete the rights form.  These commands have SAMPLE
+%% values in them; it is your responsibility as an author to replace
+%% the commands and values with those provided to you when you
+%% complete the rights form.
+\setcopyright{acmcopyright}
+\copyrightyear{2018}
+\acmYear{2018}
+\acmDOI{10.1145/1122445.1122456}
+
+%% These commands are for a PROCEEDINGS abstract or paper.
+\acmConference[Woodstock '18]{Woodstock '18: ACM Symposium on Neural
+  Gaze Detection}{June 03--05, 2018}{Woodstock, NY}
+\acmBooktitle{Estratégia para os Dados Abertos}
+%\acmISBN{978-1-4503-XXXX-X/18/06}
+
+
+%%
+%% Submission ID.
+%% Use this when submitting an article to a sponsored event. You'll
+%% receive a unique submission ID from the organizers
+%% of the event, and this ID should be used as the parameter to this command.
+%%\acmSubmissionID{123-A56-BU3}
+
+%%
+%% The majority of ACM publications use numbered citations and
+%% references.  The command \citestyle{authoryear} switches to the
+%% "author year" style.
+%%
+%% If you are preparing content for an event
+%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
+%% citations and references.
+%% Uncommenting
+%% the next command will enable that style.
+%%\citestyle{acmauthoryear}
+
+%%
+%% end of the preamble, start of the body of the document source.
+\begin{document}
+
+%%
+%% The "title" command has an optional parameter,
+%% allowing the author to define a "short title" to be used in page headers.
+\title{Repositórios de Dados: Objetivos, Funcionalidades e Alternativas}
+
+%%
+%% The "author" command and its associated commands are used to define
+%% the authors and their affiliations.
+%% Of note is the shared affiliation of the first two authors, and the
+%% "authornote" and "authornotemark" commands
+%% used to denote shared contribution to the research.
+\author{João Rocha da Silva}
+\authornote{Investigador no INESC TEC e Professor Auxiliar Convidado na Faculdade de Engenharia da Universidade do Porto}
+\email{joaorosilva@gmail.com}
+\orcid{0000-0001-9659-6256}
+\affiliation{%
+  \institution{INESC TEC / Faculdade de Engenharia da Universidade do Porto}
+  \streetaddress{Campus da Faculdade de Engenharia da Universidade do Porto, Rua Dr. Roberto Frias}
+  \city{Porto}
+  \state{Portugal}
+  \postcode{4200-465}
+}
+
+%%
+%% By default, the full list of authors will be used in the page
+%% headers. Often, this list is too long, and will overlap
+%% other information printed in the page headers. This command allows
+%% the author to define a more concise list
+%% of authors' names for this purpose.
+\renewcommand{\shortauthors}{João Rocha da Silva}
+
+%%
+%% The abstract is a short summary of the work to be presented in the
+%% article.
+\begin{abstract}
+    Os repositórios de dados de investigação são cada vez mais uma peça essencial para o processo científico. Não só fomentam a reprodutibilidade das conclusões publicadas nos artigos científicos como assumem um papel crucial na atribuição de crédito aos criadores de dados, pois expôem ao público um trabalho de recolha, processamento e anotação que tanto tem de dispensioso como por vezes de invisível.
+    A escolha de um software para suportar um repositório de dados deve ser guiada pelas necessidades das principais partes interessadas. Assim sendo, neste artigo discutem-se as principais funcionalidades desejáveis num repositório de dados, tanto do ponto de vista técnico (software e infraestrutura) como do ponto de vista político, nomeadamente no que diz respeito às garantias e compromissos a assumir pelas instituições que os alojam no sentido de permitir a sua certificação de acordo com a estratégia da European Open Science Cloud.
+\end{abstract}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{repositorios de dados, ciência aberta, e-Science, Estratégia para os Dados Abertos, Fundação para a Ciência e Tecnologia}
+
+%% A "teaser" image appears between the author and affiliation
+%% information and the body of the document, and typically spans the
+%% page.
+% \begin{teaserfigure}
+%   \includegraphics[width=\textwidth]{sampleteaser}
+%   \caption{Seattle Mariners at Spring Training, 2010.}
+%   \Description{Enjoying the baseball game from the third-base
+%   seats. Ichiro Suzuki preparing to bat.} 
+%   \label{fig:teaser}
+% \end{teaserfigure}
+
+%%
+%% This command processes the author and affiliation and title
+%% information and builds the first part of the formatted document.
+\maketitle
+
+\section{Introdução}
+
+Os princípios FAIR para a gestão de dados de investigação especificam que os dados devem ser Findable (encontráveis), Accessible (acessíveis), Interoperable (interoeráveis) and Reusable (reutilizáveis)~\cite{wilkinson2016fair}. 
+
+Recentemente, um grupo de peritos da Comissão Europeia debruçou-se sobre o problema dos dados FAIR, tendo concluído que os componentes essenciais de um ecossistema FAIR são: políticas, planos de gestão de dados (DMP), identificadores, normas e repositórios~\cite{hodson2018turning}. Neste artigo serão abordados alguns destes tópicos
+
+\section{O papel do repositório na aplicação dos princípios FAIR}
+
+%TODO JRS 
+
+Nesta secção utilizaremos os princípios FAIR como guiões orientadores para elencar algumas das funcionalidades relevantes para um repositório de dados. 
+
+\emph{Findable}, porque os conjuntos de dados devem ser fáceis de descobrir, tanto por humanos como por máquinas. Para tal, devem incluir (F1) um identificador global único e persistente, (F2) possuir metadados ricos, que por sua vez (F3) devem incluir claramente o identificador dos recursos que descrevem. O quarto e último aspeto, (F4), especifica que os tanto dados como metadados devem estar registados em recursos pesquisáveis. 
+
+De forma a facilitar a satisfação destes requisitos, uma plataforma de repositório deverá começar por proporcionar integração programática com um fornecedor de identificadores persistentes como por exemplo DOI\footnote{Digital Object Identifier} ou handle\footnote{http://www.handle.net/}. A vantagem para os gestores de repositório é a possibilidade de atribuir identificadores automaticamente aos conjunto de dados disponibilizados. Um identificador persistente funciona, em palavras simples, como um atalho para um programa num computador. Não é uma cópia do conjunto de dados, mas sim apenas um apontador para o local onde esse conjunto de dados está publicado (tipicamente, um repositório). Sendo assim, deve poder ser \emph{des-referenciado}, ou seja, deve ser possível obter o conjunto de dados a partir do seu identificador. Para um ser humano, tal operação pode consistir apenas num simples clique numa ligação apresentada no seu navegador Web; para uma máquina, contudo, pode ser um pedido de rede à plataforma que gere os identificadores. Em ambos os casos, a entidade solicita o recurso por detrás daquele identificador; no caso do humano, a resposta será em HTML, código que o seu navegador pode interpretar de forma a construir  uma página web legível para humanos. Para uma máquina, o formato devolvido poderá ser, por exemplo XML ou RDF (formatos de representação de informaçºao que as máquinas podem interpretar). 
+
+No caso do repositório de dados do INESC TEC\footnote{Ligação: \url{https:/rdm.inesctec.pt}}, a FCT negociou um contrato para a aquisição de pacotes de identificadores junto da DataCite\footnote{Ligação: \url{https://datacite.org/}}, que permitiu ao repositório emitir DOIs para os conjuntos de dados despositados. 
+
+Para satisfazer os requisitos F2 e F3 é necessário que os registos de metadados associados a cada conjunto de dados obedeçam a um esquema normalizado, como é o caso do DataCite Schema\footnote{\url{https://schema.datacite.org/meta/kernel-4.3/}}. Uma grande vantagem do uso de um esquema de metadados em conjunção com a atribuição de um DOI é que cada identificador ficará associado a uma ficha de metadados no momento da \emph{cunhagem} do DOI. Tipicamente, as plataformas de emissão de identificadores não permitem sequer a sua cunhagem sem o preenchimento dessa ficha de metadados. Esta ficha ficará então guardada na plataforma emissora do DOI, e mesmo que o conjunto de dados deixe de estar disponível no repositório, a ficha continuará disponivel para consulta na plataforma fornecedora do identificador (satisfazendo o requisito A2, descrito a seguir).
+
+\emph{Accessible}, porque tanto dados como metadados devem ser acessíveis através através de identificadores, através de protocolos de comunicações normalizados (A1). Este ponto requer que o protocolo seja aberto, livre e universalmente implementável (A1.1), e que inclua procedimentos de autenticação e autorização, quando necessário (A1.2). O segundo requisito para assegurar a acessibilidade (A2) é que os metadados devem permanecer acessíveis, mesmo quando os dados deixam de o estar.
+
+Para satisfazer o requisito A1, um repositório deverá suportar o processo de des-referenciação de identificadores persistentes. 
+
+\emph{Interoperable}, porque os dados precisam frequentemente de ser integrados com outros dados, e têm que ser facilmente integráveis em fluxos de trabalho de processamento. Só assim podem ser facilmente armazenados e analisados de forma interoperável. Para assegurar a interoperabilidade, tanto dados como metadados devem (I1) usar uma linguagem formal, acessível e largamente aplicada para representação de conhecimento, (I2) devem usar vocabulários que, por sua vez, seguem os princípios FAIR, e (I3) devem incluir referências qualificadas para outros dados e metadados.
+
+\textit{Reusable}, pois o objetivo final dos princípios FAIR é o de fomentar a reutilização de dados. Para serem Reutilizáveis, tanto dados como metadados devem (R1) ser descritos com uma grande variedade de atributos corretos e relevantes. Este princípio subdivide-se em três: (R1.1) devem ser publicados com uma licença de utilização clara e acessível, (R1.2) devem estar associados a informação de proveniência detalhada, sendo que esses dados e metadados devem satisfazer as normas relevantes de cada domínio (R1.3).
+
+\section{Partes interessadas}
+
+No processo de implementação e manutenção de um repositório de dados é possível identificar diversas partes interessadas. De acordo com o Digital Curation Centre~\cite{DCC_stakeholders}, 
+
+\section{Visão geral de funcionalidades}
+
+Existem diferentes alternativas para a montagem de um repositório de dados. Uma análise comparativa produzida pelo projeto Dataverse\footnote{Ligação:  \url{https://dataverse.org/blog/comparative-review-various-data-repositories}} apresenta uma comparação das principais plataformas de repositórios de dados, tendo em conta três grupos de facetas: Funcionalidades de Software, Controlo/Organização e Conteúdo. 
+
+Uma outra comparação~\cite{amorimComparison2017} discute em mais profundidade algumas características técnicas de diversas plataformas. Esta análise foca-se apenas nas alternativas disponíveis em regime de código aberto e instaláveis localmente, para poder retirar conclusões relativamente ao modelo de dados por detrás de cada solução de software. 
+
+Tão importante como comparar funcionalidades oferecidas pelas plataformas é estudar quais funcionalidades são mais valorizadas pelos utilizadores destas plataformas. Para responder a esta questão, o Grupo de Interesse das Plataformas de Gestão de Dados de Investigação (RPRD IG) da Research Data Alliance (RDA) compilou uma Matriz de Casos de Uso e Requisitos Funcionais para as Plataformas de Gestão de Dados de Investigação.
+
+Nesta breve comparação, as plataformas serão divididas em duas categorias principais: serviços ``chave-na-mão'', em que todas as necessidades do serviço (alojamento, manutenção, assistência técnica, curadoria ou atribuição de identificadores) faz parte de um pacote oferecido às instituições interessadas em partilhar conjuntos de dados. Em alternativa, apresentam-se as soluções alojadas localmente. Estas diferem em relação às suas alternativas ``chave-na-mão'' na medida em que exigem instalação e manutenção por parte de uma equipa de IT interna à organização. O trabalho de curadoria na plataforma também tem que ser levado a cabo inteiramente pelos elementos da organização e geralmente não existe nenhuma obrigação de assistência por parte dos desenvolvedores do software. Contudo, nos projetos de software open-source existe normalmente um fórum público onde os utilizadores podem propor melhorias ao software e reportar \textit{bugs}.
+
+
+
+
+
+\section{Certificação}
+
+Para além dos princípios FAIR, que se apresentam como linhas gerais para aquilo que um processo de gestão de dados deve proporcionar, surgiram recentemente os princípios TRUST~\cite{TRUSTprinciples}. Estes focam-se no problema da confiança nas infraestruturas, organizações e qualidade dos dados de investigação. Estes princípios oferecem, de acordo com os autores, uma \emph{framework} de discussão para ajudar a melhorar a confiança de todas as partes interessadas no processo de gestão de dados.
+
+De acordo com o Guião Estratégico de Implementação (GEI) da EOSC (European Open Science Cloud), a certificação de repositórios de dados é uma parte essencial na visão a longo prazo da Comissão Europeia. A certificação pode oferecer a algumas frameworks 
+
+\section{Automatização da gestão de dados}
+
+Qualquer processo de gestão de dados de investigação deve começar com o desenho de um Plano de Gestão de Dados (ou DMP, do inglês Data Management Plan). Um DMP é um documento tipicamente escrito e aprovado antes do início de um projeto de investigação. Em alguns casos, é já requisito obrigatório em chamadas de propostas de projetos de investigação suportados por fundos públicos~\cite{Foundation2011}) e que especifica todos os aspetos relacionados com a gestão dos dados produzidos ao longo do projeto~\cite{}. 
+
+Entre outros aspetos, que dados serão produzidos no contexto de um projeto, que metadados serão anexados aos dados publicados, onde eles irão ficar disponíveis após o fim do projeto, entre outros pontos. No Reino Unido, o Digital Curation Centre disponibiliza tanto um guião~\cite{jones_dmp} para a escrita deste tipo de documentos como uma ferramenta online, o DMP Online~\footnote{\url{Ligação: https://dmponline.dcc.ac.uk}}, que assiste os investigadores e curadores na elaboração dos seus DMP, assistidos por uma base de dados de templates de DMP aceites por diferentes entidades financiadoras.
+
+Com a grande quantidade de dados de investigação gerada diariamente surge a necessidade de acompanhar e monitorizar a implementação de DMP, mas de forma automática. Três exemplos simples de operações frequentes, repetitivas e facilmente automatizáveis são: 
+
+\begin{itemize}
+    \item Simples verificação da disponibilidade dos dados depositados
+    \item Controlo de qualidade dos metadados associados aos conjuntos de dados acabados
+    \item Verificação das licenças associadas aos conjuntos de dados
+\end{itemize}
+
+Para lidar com estas operações e outras de forma mais automática surgiram os chamados DMP Accionáveis por Máquina (maDMP, do inglês \textit{Machine-Actionable DMP}). Desta forma é possível assim libertar os curadores de dados para outras operações menos automatizáveis, como o suporte direto aos investigadores ou atividades de formação.
+
+Como preconizado pelos autores das 10 regras para maDMP~\cite{miksa_tomasz_2018_1172673}, deve ser possível aos sistemas informáticos levar a cabo ações em nome das partes interessadas no processo de gestão de dados de investigação. Operações dadas como exemplo incluem a recolha automática de informação administrativa relevante para anotação dos recursos produzidos. Exemplos dessa informação incluem, por exemplo, as recuperação de referências aos financiadores dos projetos, os currículos dos autores dos conjuntos de dados assim como as informações corretas das instituições de acolhimento dos investigadores. 
+
+Esta necessidade de suporte a automação e integração tem implicações vastas do ponto de vista do desenho e funcionalidades de um repositório de dados, na medida em que a solução deve disponibilizar uma API (\textit{Application Programming Interface}) completa e bem documentada, de forma a permitir a sistemas externos executar estas operações sem a necessidade de intervenção humana.
+
+\subsection{O papel da interoperabilidade na descoberta de conjuntos de dados}
+
+Ao mesmo tempo, a integração com diretórios de dados deve ser transparente e assente em protocolos de interoperabilidade standard. Estes agregadores são portais que indexam o conteúdo dos repositórios para facilitar a pesquisa e descoberta de recursos neles contidos. Exemplos destes agregadores são, por exemplo, o Google Dataset Search e o portal re3data. 
+
+Para facilitar a indexação dos conteúdos dos repositórios, estes implementam suporte ao protocolo OAI-PMH (Open Access Initiative Protocol for Metadata Harvesting). Este protocolo expõe os metadados de todos os registos no repositório de forma paginada, para que seja lida sequencialmente e indexada; contudo, não possibilita a pesquisa e recuperação de registos específicos por termos contidos nos registos de metadados, por exemplo. Para conseguir tal funcionalidade é necessário proceder à inserção de todos os documentos num índice de pesquisa como é o caso do Lucene ou Solr. Uma consequência óbvia é a necessidade de manutenção de cópias dos registos e atualizações periódicas de todo o índice---uma operação lenta e dispendiosa em termos de recursos informáticos, que coloca todo o custo de manutenção do serviço do lado dos clientes.
+
+Uma situação oposta ocorre com a adoção de Dados Ligados (\textit{Linked Data}) na representação de metadados para conjuntos de dados de investigação. Esta representação de dados vem eliminar a necessidade de indexação periódica de conteúdos e melhorar muito a precisão das pesquisas, caso os dados sejam estruturados de acordo com uma ou mais ontologias. Uma ontologia é definida, na Ciência da Informação, como uma \textit{especificação de uma conceptualização}\cite{gruber1995toward}, que permite às máquinas, por exemplo, interpretar o significado dos tipos de entidades representadas num sistema e as relações que se podem estabelecer entre elas.
+
+A representação via Linked Data permite uma maior descentralização da carga de pesquisas sobre os servidores onde os repositórios estão alojados. Reduz também a necessidade de indexação porque é possível correr pesquisas nos próprios servidores sem ter que primeiro indexar todo o seu conteúdo e permite aos clientes do serviço recuperar conjuntos de dados com muito mais precisão do que nos casos em que se usa um índice de pesquisa simples baseado em palavras-chave, pois é possível especificar critérios muito detalhados sob a forma interrogações SPARQL.
+
+A disponibilização de Linked Data por parte dos repositórios tem, contudo, um custo para quem hospeda esses repositórios. As consultas SPARQL são exigentes do ponto de vista computacional e, se um número elevado de utilizadores (máquinas ou humanos) aceder ao website ao mesmo tempo, é fácil afetar os tempos de resposta da infraestrutura. Isto é especialmente relevante quando se considera a funcionalidade de pesquisa federada, onde múltiplos servidores podem ser contactados para conseguir obter os resultados pretendidos por uma única pesquisa iniciada em qualquer dos nós da federação.
+
+O futuro dos repositórios de dados deve passar assim por uma solução híbrida, onde servidores e clientes partilham informação para possibilitar também a partilha do esforço de interrogação e descoberta de dados. Soluções como a Linked Data Fragments\cite{VERBORGH2016184} propõem a combinação de interrogações sobre \textit{endpoints} tradicionais (no servidor do repositório que expõe Dados Ligados) com a interrogação a dados locais a cada cliente, reduzindo assim a carga sobre o servidor.
+
+\subsection{Repositórios como plataformas de computação}
+
+Cada vez mais, o valor de um repositório de dados reside na facilidade de reutilização dos dados nele contidos. Tecnologias recentes como os Research Notebooks e a Containerização permitem tornar os algoritmos mais portáteis portáteis, de forma a poderem ser executados remotamente sobre os dados depositados num repositório. O papel deste torna-se assim muito mais do que o de simples armazenista, indexador e recuperador de pacotes de dados.
+
+É muito comum descobrir conjuntos de dados que, apesar de publicados e devidamente descritos com metadados completos, não são interpretáveis ou reproduzíveis quando um investigador tenta repetir os passos experimentais reportados num artigo de investigação\cite{}. 
+
+Os Research Notebooks são cadernos de laboratório interactivos que encerram em si os dados-base, código de processamento que transforma os dados base em dados processados, e até mesmo visualizações e gráficos gerados na hora com base nos dados e no código do Notebook.
+
+Os Notebooks vêm também possibilitar suportar uma dos maiores mudanças no paradigma de publicação científica dos últimos tempos. A combinação elegante de texto, trechos de código e visualizações apelativas permitiu a criação dos chamados "Web Journals" como por exemplo o distill.pub. Estes distinguem-se das publicações convencionais, ao incorporar visualizações interativas no próprio texto dos artigos científicos, fomentando a experimentação através da manipulação de parâmetros de entrada dos algoritmos, produzindo um feedback visual imediato aos leitores. Toda a computação tem, no entanto, que ser executada em tempo real, o que implica a montagem de uma réplica do ambiente de processamento por detrás do portal web que suporta o journal.
+
+Com o problema do empacotamento do processamento e dos dados a ser abordado pelos Notebooks, resta o problema de onde realizar a execução desses algoritmos. Nem todos os conjuntos de dados se prestam a ser transportados pela rede em tempo útil para a execução de um determinado algoritmo, pois em certas disciplinas o seu tamanho pode ascender a centenas de gigabytes ou mesmo terabytes. Assim sendo, é necesário levar a computação até aos dados em vez de puxar os dados até à computação. Nesta secção
+
+A containerização é uma tecnologia de virtualização que, quando comparada com as máquinas virtuais convencionais, elimina a necessidade de virtualizar um sistema operativo para executar determinado programa, substituindo essas dependências por um ambiente de execução (ou \textit{runtime}) próprio. O exemplo mais comum de ambiente de virtualização é o Docker\footnote{Ligação: \url{https://www.docker.com/}}. Esta eficiência torna possível a um repositório de dados executar algoritmos directamente sobre os dados nele depositados e retornar apenas os resultados aos clientes que pedem esses processamentos, em vez de exigir a descarga dos dados para o cliente. Talvez a funcionalidade mais interessante para um repositório de dados é a possibilidade de especificar todos os passos de instalação de dependências necessárias à execução dos algoritmos de processamento de dados, efectivamente eliminando os problemas de replicação do ambiente de execução de 
+
+\section{O futuro dos repositórios de dados}
+
+O GEI 
+
+\section{Discussão e conclusões}
+
+Nos últimos anos, os 
+
+Em jeito de conclusão
+
+%%
+%% The acknowledgments section is defined using the "acks" environment
+%% (and NOT an unnumbered section). This ensures the proper
+%% identification of the section in the article metadata, and the
+%% consistent spelling of the heading.
+%\begin{acks}
+%O autor agradece o convite para participar no grupo de trabalho %Estratégia para os Dados Abertos.
+%\end{acks}
+
+%%
+%% The next two lines define the bibliography style to be used, and
+%% the bibliography file.
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{referencias}
+
+%%
+%% If your work has an appendix, this is the place to put it.
+% \appendix
+
+\end{document}
+\endinput
+%%
+%% End of file `sample-authordraft.tex'.
