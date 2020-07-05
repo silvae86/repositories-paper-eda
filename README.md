@@ -1,5 +1,5 @@
 # repositories-paper-eda
-Um position paper sobre plataformas de repositórios de dados
+Um position paper sobre plataformas de repositórios de dados elaborado no contexto da Estratégia Nacional para os Dados Abertos.
 
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
