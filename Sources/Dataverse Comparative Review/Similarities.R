@@ -18,8 +18,10 @@ Comparative <- read_excel("Comparative.xlsx",
                           sheet = "Cross", col_names = FALSE)
 
 rda_parameters <- transpose(Comparative[1:3,])
+rda_parameters <- na.omit(rda_parameters)
 colnames(rda_parameters) <- c("1", "2", "3")
 dataverse_parameters <- Comparative[1:2]
+dataverse_parameters <- na.omit(dataverse_parameters)
 colnames(dataverse_parameters) <- c("1", "2")
 
 all_parameters <- rbind(rda_parameters$'2', dataverse_parameters$'2')
@@ -33,8 +35,10 @@ all_parameters_Tfidf = DocumentTermMatrix(all_parameters_corpus, control = list(
 all_parameters_Matrix = as.matrix(all_parameters_Tfidf)
 
 dist <- dist(all_parameters_Matrix, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
-dist <- as.data.frame(as.matrix(dist), row.names = all_parameters)
+dist <- as.matrix(dist)
 
+subset <- dist[1:nrow(rda_parameters), nrow(rda_parameters):ncol(dist)]
 
+write.table(subset, "similarities.xls", row.names = FALSE, dec = ".", sep = "##", quote = FALSE)
 
 
