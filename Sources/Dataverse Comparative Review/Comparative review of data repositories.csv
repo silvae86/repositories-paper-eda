@@ -1,0 +1,74 @@
+Categories#Software Features#Analyze Boston (CKAN)#data.world#Dryad#figshare#Harvard Dataverse#Mendeley Data#Open ICPSR#Zenodo#Open Science Framework#Yes#No#Most popular#What we do that few others do#What we don't do that many others do
+Publishing & Versions#Ability to access older versions of files#No#No#Yes - on data package page#Yes#Yes#Yes#Yes#Yes#Yes#4#0#4#0#0
+Customization#"Ability to create a ""Dataverse"" or Repository bringing together multiple datasets"#NA#No#No#Yes#Yes#Planned Q2 18#Yes#"No (though ""Communities"" are sometimes used to partially fill this function)"#Yes#2#1#1#1#0
+Customization#"Ability to customize the look of your ""Dataverse"" or collection"#NA#No#No#No#Yes#No#Yes, using openICPSR for Journals and Institutions#No#No#2#2#0#3#0
+File Upload & Handling#Ability to embargo files#NA#No#Yes#Yes#No#Yes#Yes#Yes#Yes#3#1#2#0#4
+Account & User Info#Ability to list your ORCID in your profile (seperate from login/auth)#NA#No#No#Yes#No#Yes#No#No#Yes#1#3#-2#0#2
+Customization#"Allowing user to select a ""featured dataset"""#Yes#No#No#No#"No (requested in #2049)"#No#No#No#No#0#4#-4#0#0
+File Upload & Handling#Analyzing tabular data (aside from geospatial mapping)#No#Yes#No#No#Yes#Yes#Yes#No#No#3#1#2#2#0
+Interoperability#Are there APIs?#Yes#Yes#Yes#Yes#Yes#Yes#No#Yes#Yes#3#1#2#1#0
+Notifications#Are users emailed about changes to their uploads? #NA##Yes#No#Yes#No#No#No#Yes#1#3#-2#4#0
+Metadata#Automated metadata generation from files#Unknown#No#Yes - using HIVE, for curators only#No#Yes#Planned Q2 18#Yes#No#Planned Q2 18#2#1#1#2#0
+Account & User Info#Creator webpages#NA#Yes#No#Yes#No#Yes#No#No#Yes#1#3#-2#0#2
+Citation#Data citation automatically generated#No#No#Yes#Yes#Yes#Yes#Yes#Yes#Yes#4#0#4#0#0
+Publishing & Versions#Dataset-level versioning#No#No#Yes#Yes#Yes#Yes#Yes#No#Yes#3#1#2#1#0
+Terms & Licensing#Do users have to actively acknowledge any conditions of use when downloading data?#No#No#No#No#Yes#No#Yes#Yes - for restricted data#No#3#1#2#2#0
+Interoperability#Dropbox integration#NA#Yes#No#No#Yes#Planned Q4 18#No#No#Yes#1#2#-1#3#0
+Search/Browse#Easily accessible Search help page#No#Yes - After searching, next to search bar#No#Yes - After searching, (help?) link inside search bar#No - search help has to be navigated to in user guides, does not explain search operators#Planned Q1 18#No#No#Yes#0#3#-3#0#1
+Interoperability#Embed data outside of application#Yes#No#Yes#Yes#Yes#Planned Q2 18#No#No#Yes#1#2#-1#2#0
+Metadata#Exposing metadata in landing page markup using Schema.org/JSON#No#No#No#Yes#Yes#Yes#Yes#No#Yes#3#1#2#1#0
+Metadata#Exposing metadata in landing page markup with html meta tags#No#No#Yes#Yes#Yes#Yes#Yes#Yes#Yes (for preprints, less robust for data until Q3)#4#0#4#0#0
+Search/Browse#Faceted search#Yes#No#Yes#Yes#Yes#Planned Q1 18#Yes#Yes#Yes#3#0#3#0#0
+File Upload & Handling#Filetypes supported (list)#NA#All file types#"""All data types and formats within reason"""#All file types#All file types#All file types#All file types#All file types#All file types#0#0#0#0#0
+Interoperability#Github integration to migrate files and metadata#NA#No#No#Yes#No#Planned Q4 18#No#Yes#Yes#1#2#-1#0#2
+File Upload & Handling#Handling large data#Yes (see https://goo.gl/rIjeCg)#No#"Yes - Limit of 20GB per file for ""package"", charge for more storage"#Yes - Default limit of 5GB per file, can support up to 5TB#Yes (experimental)#Planned Q2 18#Yes#Yes - limit of 50GB per file. Upload page mentions you can contact them about larger datasets.#Yes - default web UI upload limit of  5 GB, files larger than 5GB can be uploaded and moved around using the command line client OSF-CLI and/or by using soon to be released multi-part file upload via CloudFiles add-on.#3#0#3#0#0
+File Upload & Handling#Handling sensitive data#NA#No#No#"Yes - ability to set files as ""confidential"""#No#No#Yes#"No (""'closed access' on Zenodo is not suitable for secret or confidential data."")"#Yes#1#3#-2#0#2
+File Upload & Handling#Mapping of Geospatial files#Yes#No#No#Yes#Yes#Yes#No#No#No#2#2#0#2#0
+Preservation#Mentions anti-virus scan of uploaded files#NA#No#Yes#No#No#No#Yes#No#No#1#3#-2#0#1
+Interoperability#Multiple login options (Shibboleth, Google, etc.)#No#No#No#Yes - institutional shib only#Yes#Planned Q1 18 - Shib#Yes - Shib, Google, Facebook, LinkedIn#Yes - ORCID, Github#Yes: Shib, ORCID, CAS, ADFS#3#0#3#0#0
+Terms & Licensing#Permissions#NA#Yes#Yes (ability to apply embargo)#"Yes (ability to apply embargo or make data ""confidential"")"#Yes#Yes, with embargo#Yes#Yes (Includes embargoed, restricted, and closed access)#Yes#4#0#4#0#0
+File Upload & Handling#Preview of zip files#NA#No#No#Yes#No#No#No#Yes#Yes#1#3#-2#0#2
+File Upload & Handling#Previewing and/or analyzing uploaded non-tabular data#Yes#Yes#No#Yes#Yes#Yes (preview images, tabular data)#Yes (some types of tabular data)#Yes (previewing, not analyzing)#Yes (preview)#4#0#4#0#0
+File Upload & Handling#Previewing tabular files#Yes#Yes#No#Yes#No#Yes#No#Yes#Yes#2#2#0#0#3
+File Upload & Handling#Provenance#NA#No#No#No#No#Yes#No#No#Yes#1#3#-2#0#1
+Account & User Info#Published data is automatically synced to ORCID via DataCite.#NA#No#No#Yes#No#Planned Q2 18#No#No#No#0#3#-3#0#1
+Metadata#Robustness of metadata#NA#Yes#Yes#Yes#Yes#Yes (depositors can describe files today; custom metadata support planned for Q1 18)#Yes#Yes#Planned Q3 18#4#0#4#0#0
+Metadata#Support for controlled vocabulary terms with URIs#No#No#?#No#Yes#No#?#Yes#No#####
+Terms & Licensing#Terms of use, copyright#Yes#Yes#No - all uploaded data is CC0#Yes#Yes#Yes#No#Yes#Yes#3#1#2#1#0
+Metrics + Reports#Tracking citations with altmetrics#No#No#No#Yes#No#No#No#No#Yes - can see metrics for downloads on individual revisions, and also on files tab (osf.io/project_guid/files) and on preprint detail view#0#4#-4#0#1
+Customization#User curation communities#NA#No#No#"Sort of - Users can curate a ""collection"" including other users' data"#No#No#No#Yes#Yes#1#3#-2#0#1
+File Upload & Handling#Users are able to control dataset file hierarchy + directory structure#NA#Yes - by uploading a zip file#No#No (can re-order files, but can't create hierarchy or directories)#Yes#Planned Jan 18#Yes#No#Yes#2#1#1#2#0
+Search/Browse#Users can search/browse with number ranges, e.g. publication date ranges#No#No#Yes#No#No#Planned Q1 18#No#No#No#0#3#-3#0#0
+###############
+#Totals: Software features##############
+#Total Yes#Yes: 9#Yes: 11#Yes: 15#Yes: 26#Yes: 24#Yes: 17#Yes: 20#Yes: 18######
+#Total No#No: 12#No: 27#No: 23#No: 12#No: 15#No: 10#No: 18#No: 21######
+###############
+#Governance/Organization##############
+Business model#Open Source#Yes#No#Yes#No#Yes#No#No#Yes#Yes#2#2#0##
+Business model#How is maintenance or development of repository funded?#Government funded#Private investments#Grants; Service charges#Unknown (Funded by Digital Science while retaining autonomy)#Grants; Institutional#Private investments (Elsevier; Mendeley Ltd)#Institutional#"Institutional (OpenAIRE / European Commission
+); donations (via CERN & Society Foundation)"#Grants and donations: https://cos.io/about/our-sponsors/#####
+Business model#Free To Use#Yes#Yes#No#Yes#Yes#Yes#Yes#Yes#Yes#4#0#4##
+Business model#Institutional Fees?#NA#No#No#"Yes - ""Figshare for Institutions"" is priced based on ""research intensity of the institution"""#No#No#Yes#No#No#1#3#-2##
+Business model#Journal Fees?#NA#No#No#"Yes - ""Figshare for Publishers"""#No#No#Yes#No#No#1#3#-2##
+Business model#Paid services?#NA#No#Yes#Yes - dedicated support team#Yes#No#Yes#No#No#2#2#0##
+Business model#Paid additional features?#NA#No#Yes - Ability to pay more for more storage#Yes - Figshare for Institutions and Figshare for Publications provide various additional features#No#Geospatial mapping available through paid third-party service#Yes - Ability to pay more for more storage#No#No#1#2#-1##
+Business model#Can depositors pay for any level of curation services?#NA#No#Yes#No#Yes#No#Yes#No#No#2#2#0##
+Business model#Can depositors pay for extra storage?#NA#No#"Yes - ""For data packages in excess of the 20GB size limit, submitters will be charged $50 for each additional 10GB, or part thereof. (Packages between 20 and 30GB = $50, between 30 and 40GB = $100, and so on)."""#No#No#No#Yes (using openICPSR for Institutions and Journals)#No#No#1#3#-2##
+Communications/Community#Road Maps#No#No#Yes - public Trello and Jira pages#No#Yes#Yes#Yes#Yes - public Huboard page#Yes#4#0#4##
+Preservation#Preservation technology?#Unknown#No - 'The company does not warrant that any data set will continue to be available to you.'#Yes - DataONE#Yes - Chronopolis#Yes - LOCKSS through Data-PASS#Yes - Amazon S3 servers in Ireland and dark archive storage with DANS#Yes - ICPSR currently maintains six copies of its data (and requires that any off-site backup be encrypted)...#Yes - All data files are stored in CERN Data Centres, primarily Geneva, with replicas in Budapest. Data files are kept in multiple replicas in a distributed file system, which is backed up to tape on a nightly basis.#Yes: files stored in multiple locations and on multiple media types. Keeps three types of hashes (MD5, SHA-1, SHA-256) for files. Keeps parity archive files to recover from up to 5% bit error. Data is replicated to Amazon Glacier. COS’s preservation fund ensures that all data stored on its services would be preserved and accessible for 50+ years in the event of COS curtailing or closing its services.#4#0#4##
+#Certification?#No#No#No#No#No#Yes#Yes - Data Seal of Approval; World Data System#No - Currently working toward ISO certification.#No#2#2#0##
+###############
+#Content##############
+#"Total # of published datasets as of July 2017"#116#Unknown#15,325 data packages (average size of 573MB)#Unknown#21,846#1500+#243#4,397#12,709 public projects#####
+#"Total # of published files as of May 2017"#426#Unknown#50,000+#"""800,000+"""#197,844#Unknown#Unknown#~191,837#885,531#####
+#"Total # of public users as of May 2017"#NA#Unknown#Unknown#Unknown#13,916 (as of July 2016)#Unknown#Unknown#Unknown#56,000#####
+#Most popular subject tags#Geospatial#health#Adaptation / Population Genetics - Empirical / Speciation#Unknown#social science#Unknown#Illinois polling#Taxonomy / Biodiversity / Animalia#"Social and Behavioral Sciences|
+Psychology|
+Arts and Humanities|
+Social Psychology|
+Engineering|
+Sociology|
+Law|
+Life Sciences|"#####
+#Subject vocabulary#Analyze Boston-custom vocabulary#Folksonomy#Folksonomy#Australian and New Zealand Standard Research Classification (ANZSRC), 2008#Dataverse-custom vocabulary#Elsevier’s OmniScience taxonomy#ICPSR Thesaurus#Folksonomy#Bepress#####

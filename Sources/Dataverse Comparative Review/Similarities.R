@@ -1,0 +1,40 @@
+if (!require(pacman)) {
+  install.packages("pacman")
+  library(pacman)
+}
+
+prep_fun = function(x) {
+  # make text lower case
+  x = str_to_lower(x)
+  # remove non-alphanumeric symbols
+  x = str_replace_all(x, "[^[:alnum:]]", " ")
+  # collapse multiple spaces
+  str_replace_all(x, "\\s+", " ")
+}
+
+pacman::p_load(readxl,data.table,stringr,futile.options,tm,stats)
+
+Comparative <- read_excel("Comparative.xlsx", 
+                          sheet = "Cross", col_names = FALSE)
+
+rda_parameters <- transpose(Comparative[1:3,])
+colnames(rda_parameters) <- c("1", "2", "3")
+dataverse_parameters <- Comparative[1:2]
+colnames(dataverse_parameters) <- c("1", "2")
+
+all_parameters <- rbind(rda_parameters$'2', dataverse_parameters$'2')
+all_parameters_corpus <- SimpleCorpus(
+  VectorSource(
+    prep_fun(all_parameters)
+  ), control = list(language='en')
+)
+
+all_parameters_Tfidf = DocumentTermMatrix(all_parameters_corpus, control = list(weighting = weightTfIdf))
+all_parameters_Matrix = as.matrix(all_parameters_Tfidf)
+
+dist <- dist(all_parameters_Matrix, method = "euclidean", diag = FALSE, upper = FALSE, p = 2)
+dist <- as.data.frame(as.matrix(dist), row.names = all_parameters)
+
+
+
+
