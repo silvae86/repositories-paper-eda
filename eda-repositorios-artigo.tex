@@ -268,6 +268,15 @@ Quando se fala de distribuição de computação e replicabilidade, surge imedia
 
 A containerização é uma tecnologia de virtualização que, quando comparada com as máquinas virtuais convencionais, elimina a necessidade de virtualizar um sistema operativo para executar um determinado programa, substituindo essas dependências por um ambiente de execução (ou \textit{runtime}) próprio. O exemplo mais comum de ambiente de virtualização é o Docker\footnote{Ligação: \url{https://www.docker.com/}}. Esta eficiência torna possível a um repositório de dados executar algoritmos directamente sobre os dados nele depositados e retornar apenas os resultados aos clientes que pedem esses processamentos, em vez de exigir a descarga dos dados para o cliente. Talvez a funcionalidade mais interessante para um repositório de dados é a possibilidade de especificar todos os passos de instalação de dependências necessárias à execução dos algoritmos de processamento de dados, reduzindo em larga medida os problemas de replicação do ambiente de execução de determinado algoritmo.
 
+\subsection{Blockchain e dados abertos}
+
+Num futuro mais descentralizado será necessário conceber soluções para assegurar a autenticidade da informação colocada em cada um dos repositórios de uma eventual federação. É claro o potencial de aplicação de tecnologias como a \emph{blockchain} aos diversos aspetos da gestão de dados abertos:
+
+\begin{itemize}
+	\item \textbf{Proveniência}: através de um registo distribuído de modificações feitas a dados e metadados será possível assegurar a sua autenticidade e não-repúdio relativamente à autoria de quaisquer operações realizadas sobre os dados. Desta forma, os autores podem até continuar a modificar um conjunto de dados, mas todas essas alterações são registadas, prevenindo modificações após a publicação de determinados resultados de investigação. Mesmo que o repositório onde um conjunto de dados está publicado seja desligado, esse historial de modificações continuará vivo nos restantes nós da rede.
+	\item \textbf{Comprovação de resultados}
+\end{itemize}
+
 \section{O futuro dos repositórios de dados}
 
 Descentralização
