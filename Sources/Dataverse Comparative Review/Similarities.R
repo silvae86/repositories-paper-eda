@@ -21,30 +21,45 @@ Comparative <- read_excel("Comparative.xlsx",
 
 rda_parameters <- transpose(Comparative[1:2,])
 rda_parameters <- na.omit(rda_parameters)
-colnames(rda_parameters) <- c("1", "2", "3")
+rownames(rda_parameters)<- c(1:nrow(rda_parameters))
+colnames(rda_parameters) <- c("1", "2")
 dataverse_parameters <- Comparative[1:2]
 dataverse_parameters <- na.omit(dataverse_parameters)
 colnames(dataverse_parameters) <- c("1", "2")
 
-all_parameters <- rbind(rda_parameters$'2', dataverse_parameters$'2')
+rm(Comparative)
+
+all_parameters <- append(rda_parameters$"2", dataverse_parameters$"2")
+
 all_parameters_corpus <- SimpleCorpus(
   VectorSource(
     prep_fun(all_parameters)
   ), control = list(language='en')
 )
 
-all_parameters_Tfidf = DocumentTermMatrix(all_parameters_corpus, control = list(weighting = weightTfIdf))
-all_parameters_Matrix = t(as.matrix(all_parameters_Tfidf))
+all_parameters_Tfidf <- DocumentTermMatrix(
+  all_parameters_corpus, 
+  control = list(weighting = weightTfIdf, 
+                 stopwords (kind = "en"), 
+                 stemming = TRUE, 
+                 removePunctuation = T,
+                 removeNumbers = T
+            )
+)
+all_parameters_Matrix <- as.matrix(all_parameters_Tfidf)
+sim <- t(cosine(t(all_parameters_Matrix)))
 
-sim <- cosine(all_parameters_Matrix)
-sim <- as.matrix(dist)
-sim[sim <= threshold] <- NA
-rownames(sim) <- colnames(sim) <- all_parameters
+nCol <- ncol(sim)
+sim <- sim[c(1:nrow(rda_parameters)),c(nrow(rda_parameters):nCol)]
+sim <- sim[,-1]
+rm(nCol)
 
+rownames(sim) <- rda_parameters$"2"
+colnames(sim) <- dataverse_parameters$"2"
 
+# filter out all those records under the threshold
+sim[sim < threshold] <- ""
 
-# subset <- sim[nrow(rda_parameters):ncol(dist), 1:nrow(rda_parameters)]
-
-write.table(x = subset, file = "similarities.xls", na = "")
+write.table(x = sim, file = "similarities.xls", na = "")
 
 
