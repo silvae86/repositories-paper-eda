@@ -35,6 +35,7 @@ dataverse_parameters$"description" <- paste(dataverse_parameters$"category", dat
 
 all_parameters <- append(rda_parameters$"description", dataverse_parameters$"description")
 
+
 all_parameters_corpus <- SimpleCorpus(
   VectorSource(
     prep_fun(all_parameters)
