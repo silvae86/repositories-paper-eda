@@ -15,7 +15,9 @@ prep_fun = function(x) {
   str_replace_all(x, "support", " ")
 }
 
-pacman::p_load(readxl,data.table,stringr,futile.options,tm,stats,text2vec,dplyr)
+pacman::p_load(readxl,data.table,stringr,futile.options,tm,stats,text2vec,dplyr,lsa)
+
+source("./repoFeatures.R")
 
 threshold <- 0.40
 
@@ -25,13 +27,11 @@ Comparative <- read_excel("Comparative.xlsx",
 rda_parameters <- transpose(Comparative[1:4,])
 rda_parameters <- na.omit(rda_parameters)
 colnames(rda_parameters) <- c("category", "feature", "description", "weight")
-rda_parameters$"description" <- paste(rda_parameters$"feature", rda_parameters$"description")
 rownames(rda_parameters)<- c(1:nrow(rda_parameters))
 
 dataverse_parameters <- Comparative[1:2]
 dataverse_parameters <- na.omit(dataverse_parameters)
 colnames(dataverse_parameters) <- c("category", "description")
-dataverse_parameters$"description" <- paste(dataverse_parameters$"category", dataverse_parameters$"description")
 
 rda_parameters.tokens = itoken(rda_parameters$"description", progressbar = FALSE)
 dataverse_parameters.tokens = itoken(dataverse_parameters$"description", progressbar = FALSE)
@@ -49,14 +49,44 @@ dtm = create_dtm(all_parameters.tokens, vectorizer)
 tfidf = TfIdf$new()
 dtm_tfidf = fit_transform(dtm, tfidf)
 
-lsa = LSA$new(n_topics = 20)
+lsa = LSA$new(n_topics = 10)
 dtm_tfidf_lsa = fit_transform(dtm_tfidf, lsa)
 
 sim = sim2(x = dtm_tfidf_lsa, method = "cosine", norm = "l2")
 
-rownames(sim) <- colnames(sim)<- all_features
 
 sim[sim < threshold] <- NA
 sim <- sim[1:nrow(rda_parameters),(nrow(rda_parameters)+1):ncol(sim)]
+sim <- cbind(rda_parameters, sim)
+colnames(sim) <- append(colnames(rda_parameters), dataverse_parameters$description)
+sim$category <- NULL
 
-write.table(sim, file = "similarities_lsa.xls", sep = "#", na = "")
+write.table(sim, file = "similarities_lsa.xls", sep = "#", na = "", row.names = F, col.names = T)
+
+matches <- melt(data = data.table(sim), measure.vars = dataverse_parameters$description, na.rm = T)
+matches$feature <- NULL
+colnames(matches) <- c("rda_feature", "weight", "dataverse_feature", "match")
+               
+merged <- merge(x = matches, y=repoFeatures, by="dataverse_feature")
+
+merged[,3:ncol(merged)] <- merged %>%
+  select(c('weight',
+           'match',
+           'Analyze Boston (CKAN)',	
+           'data.world',	
+           'Dryad',	
+           'figshare',	
+           'Harvard Dataverse',	
+           'Mendeley Data',	
+           'Open ICPSR',
+           'Zenodo',	
+           'Open Science Framework'
+  )) %>%
+  mutate_all(as.numeric)
+
+merged[,5:ncol(merged)] <- merged[,5:ncol(merged)] * merged$weight
+
+totals <- colSums(merged[,5:ncol(merged)])
+View(totals)
+
+plot(totals)

@@ -68,20 +68,6 @@ sim[sim < threshold] <- NA
 
   
 rm(all_parameters, all_parameters_corpus, all_parameters_Tfidf, prep_fun, nCol, Comparative, threshold, rda_parameters, dataverse_parameters, all_parameters_Matrix)
-### Get Repository characteristics
-
-repoFeatures <- read_excel("Comparative.xlsx", 
-                          sheet = "Comparative review of data repo", 
-                          col_names = TRUE)
-
-repoFeatures["Categories"] <- NULL
-repoFeatures <- as.matrix(repoFeatures)
-featureNames <- repoFeatures[,1]
-repoFeatures[!(repoFeatures %ilike% "%Yes%") ] <- 0
-repoFeatures[repoFeatures %ilike% "%Yes%"] <- 1
-repoFeatures[,1] <- featureNames
-repoFeatures <- na.omit(repoFeatures)
-repoFeatures <- repoFeatures[,c(1:(ncol(repoFeatures)-5))]
 
 melted <- melt(data.table(sim), na.rm = T, id.vars="rda_feature")
 colnames(melted) <- c("rda_feature", "dataverse_feature", "similarity")
