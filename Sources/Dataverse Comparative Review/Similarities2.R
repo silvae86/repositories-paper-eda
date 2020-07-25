@@ -15,7 +15,14 @@ prep_fun = function(x) {
   str_replace_all(x, "support", " ")
 }
 
-pacman::p_load(readxl,data.table,stringr,futile.options,tm,stats,text2vec,dplyr,lsa)
+# For Ubuntu 20.04 focal:
+# sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+# sudo apt update
+# sudo apt install r-base r-base-core r-recommended r-base-dev
+# sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
+# sudo apt update
+# sudo apt install r-cran-rgl r-cran-rjags r-cran-snow r-cran-ggplot2 r-cran-igraph r-cran-lme4 r-cran-rjava r-cran-devtools r-cran-roxygen2 r-cran-rjava
+pacman::p_load(readxl,data.table,dplyr,lsa,text2vec,stringr,readODS)
 
 source("./repoFeatures.R")
 
@@ -61,7 +68,14 @@ sim <- cbind(rda_parameters, sim)
 colnames(sim) <- append(colnames(rda_parameters), dataverse_parameters$description)
 sim$category <- NULL
 
-write.table(sim, file = "similarities_lsa.xls", sep = "#", na = "", row.names = F, col.names = T)
+# Joao Rocha da Silva, Jul 2020
+# replace with "similarities_lsa_validated.xlsx" if you want to destroy 
+# the manually validated results and restart
+# did this because LSA is an automated method; some matches are incorrect.
+write_ods(sim, path = "similarities_lsa.ods", row_names = F)
+
+# read manually validated table
+sim <- read_ods(file = "similarities_lsa_validated.ods", sheetIndex = 1)
 
 matches <- melt(data = data.table(sim), measure.vars = dataverse_parameters$description, na.rm = T)
 matches$feature <- NULL
