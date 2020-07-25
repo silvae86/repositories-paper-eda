@@ -101,6 +101,4 @@ merged[,3:ncol(merged)] <- merged %>%
 merged[,5:ncol(merged)] <- merged[,5:ncol(merged)] * merged$weight
 
 totals <- colSums(merged[,5:ncol(merged)])
-View(totals)
 
-plot(totals)
