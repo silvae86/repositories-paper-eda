@@ -46,7 +46,7 @@ dataverse_parameters.tokens = itoken(dataverse_parameters$"description", progres
 all_features <- append(rda_parameters$"feature", dataverse_parameters$"description")
 all_parameters <- append(rda_parameters$"description", dataverse_parameters$"description")
 all_parameters <- prep_fun(all_parameters)
-  
+
 all_parameters.tokens <- itoken(all_parameters, progressbar = FALSE)
 v = create_vocabulary(all_parameters.tokens, stopwords = stopwords_en)
 v = prune_vocabulary(v, doc_proportion_max = 0.6, term_count_min = 4)
@@ -73,32 +73,3 @@ sim$category <- NULL
 # the manually validated results and restart
 # did this because LSA is an automated method; some matches are incorrect.
 write_ods(sim, path = "similarities_lsa.ods", row_names = F)
-
-# read manually validated table
-sim <- read_ods(file = "similarities_lsa_validated.ods", sheetIndex = 1)
-
-matches <- melt(data = data.table(sim), measure.vars = dataverse_parameters$description, na.rm = T)
-matches$feature <- NULL
-colnames(matches) <- c("rda_feature", "weight", "dataverse_feature", "match")
-               
-merged <- merge(x = matches, y=repoFeatures, by="dataverse_feature")
-
-merged[,3:ncol(merged)] <- merged %>%
-  select(c('weight',
-           'match',
-           'Analyze Boston (CKAN)',	
-           'data.world',	
-           'Dryad',	
-           'figshare',	
-           'Harvard Dataverse',	
-           'Mendeley Data',	
-           'Open ICPSR',
-           'Zenodo',	
-           'Open Science Framework'
-  )) %>%
-  mutate_all(as.numeric)
-
-merged[,5:ncol(merged)] <- merged[,5:ncol(merged)] * merged$weight
-
-totals <- colSums(merged[,5:ncol(merged)])
-

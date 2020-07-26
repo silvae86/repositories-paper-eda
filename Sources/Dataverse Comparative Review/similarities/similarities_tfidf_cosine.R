@@ -64,8 +64,6 @@ colnames(sim) <- append(c("rda_feature", "weight"), dataverse_parameters$"descri
 
 # filter out all those records under the threshold
 sim[sim < threshold] <- NA
-
-
   
 rm(all_parameters, all_parameters_corpus, all_parameters_Tfidf, prep_fun, nCol, Comparative, threshold, rda_parameters, dataverse_parameters, all_parameters_Matrix)
 

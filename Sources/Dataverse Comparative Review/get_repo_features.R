@@ -20,11 +20,23 @@ repoFeatures[repoFeatures %like% "No" |
 
 repoFeatures[,1] <- featureNames
 repoFeatures <- na.omit(repoFeatures)
-repoFeatures <- repoFeatures[,c(1:(ncol(repoFeatures)-5))]
+repoFeatures <- as.data.table(repoFeatures) %>%
+  select(c('Software Features',
+           'Analyze Boston (CKAN)',	
+           'data.world',	
+           'Dryad',	
+           'figshare',	
+           'Harvard Dataverse',	
+           'Mendeley Data',	
+           'Open ICPSR',
+           'Zenodo',	
+           'Open Science Framework',
+           'Dendro'
+  ))
+
 columns <- colnames(repoFeatures)
 columns[1] <- "dataverse_feature"
 colnames(repoFeatures) <- columns
 
-
-write.table(repoFeatures, file = "repofeatures.xls", sep = "#", na = "0", row.names = F, col.names = T)
+#write.table(repoFeatures, file = "repofeatures.xls", sep = "#", na = "0", row.names = F, col.names = T)
 
