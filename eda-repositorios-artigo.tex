@@ -195,19 +195,6 @@ A recomendação R1.2 refere a necessidade de manter um historial que permita es
 
 É bastante claro que domínios de investigação distintos poderão gerar conjuntos de dados muito diferentes também. Como tal, o processo de descrição dos mesmos deve também ser adaptado. Satisfazer a recomendação R1.3, que preconiza que os dados e metadados devem obedecer às normas vigentes em cada domínio requer suporte por parte do software de repositório, que deve ser flexível ao ponto de permitir a parametrização de múltiplos esquemas de metadados para distintos domínios. Deverá também permitir a escolha e combinação de múltiplos descritores (genéricos e específicos do domínio do conjunto de dados em depósito) aquando do preenchimento do registo de metadados, sejam esses descritores genéricos ou específicos de domínio. É preciso também não esquecer o trabalho fundamental dos curadores no apoio institucional aos seus investigadores, pois a escolha dos descritores mais adequados a cada conjunto de dados
 
-\section{Visão geral de funcionalidades}
-
-Existem diferentes alternativas para a montagem de um repositório de dados. Uma análise comparativa produzida pelo projeto Dataverse\footnote{Ligação:  \url{https://dataverse.org/blog/comparative-review-various-data-repositories}} apresenta uma comparação das principais plataformas de repositórios de dados, tendo em conta três grupos de facetas: Funcionalidades de Software, Controlo/Organização e Conteúdo. 
-
-Uma outra comparação~\cite{amorimComparison2017} discute em mais profundidade algumas características técnicas de diversas plataformas. Esta análise foca-se apenas nas alternativas disponíveis em regime de código aberto e instaláveis localmente, para poder retirar conclusões relativamente ao modelo de dados por detrás de cada solução de software. 
-
-Há muitas formas de categorizar estas plataformas, mas existem duas categorias principais: serviços ``chave-na-mão'', em que todas as necessidades do serviço (alojamento, manutenção, assistência técnica, curadoria ou atribuição de identificadores) faz parte de um pacote oferecido às instituições interessadas em partilhar conjuntos de dados. Em alternativa, apresentam-se as soluções alojadas localmente. Estas diferem em relação às suas alternativas ``chave-na-mão'' na medida em que exigem instalação e manutenção por parte de uma equipa de IT interna à organização. O trabalho de curadoria na plataforma também tem que ser levado a cabo inteiramente pelos elementos da organização e geralmente não existe nenhuma obrigação de assistência por parte dos desenvolvedores do software. Contudo, nos projetos de software open-source existe normalmente um fórum público onde os utilizadores podem propor melhorias ao software e reportar \textit{bugs}.
-
-
-Tão importante como comparar funcionalidades oferecidas pelas plataformas é estudar quais funcionalidades são mais valorizadas pelos utilizadores destas plataformas. Para responder a esta questão, o Grupo de Interesse das Plataformas de Gestão de Dados de Investigação (RPRD IG) da Research Data Alliance (RDA) compilou uma Matriz de Casos de Uso e Requisitos Funcionais para as Plataformas de Gestão de Dados de Investigação. Esta matriz resultou de um inquérito a 11 grupos que apresentaram os seus casos de uso para repositórios de dados de investigação. Cada um destes grupos classificou a importância de 26 requisitos vulgarmente associados a um repositório de dados. No final, foi atribuída uma pontuação a cada um dos requisitos funcionais, com base na importância que a totalidade dos grupos lhe atribuiu no contexto do seu caso de uso.
-
-Analisando a matriz de requisitos funcionais, é possível ver que %TODO
-
 \section{Certificação}
 
 Para além dos princípios FAIR, que se apresentam como linhas gerais para aquilo que um processo de gestão de dados deve proporcionar, surgiram recentemente os princípios TRUST~\cite{TRUSTprinciples}. Estes focam-se no problema da confiança nas infraestruturas, organizações e qualidade dos dados de investigação. Estes princípios oferecem, de acordo com os autores, uma \emph{framework} de discussão para ajudar a melhorar a confiança de todas as partes interessadas no processo de gestão de dados. Estas partes interessadas vão desde os próprios investigadores, passando pelas instituições académicas ou de ciência que os acolhem, as entidades financiadoras, entre outros~\cite{DCC_stakeholders}. 
@@ -278,7 +265,21 @@ Num futuro onde os repositórios de dados sejam interligados num ambiente descen
 \end{itemize}
 
 % TODO JRS
-Um trabalho de investigação muito recente nesta área visa descobrir formas de utilização da blockchain para validar os resultados de operações sobre dados abertos~\cite{}. 
+Um trabalho de investigação muito recente nesta área visa descobrir formas de utilização da blockchain para assegurar a os resultados de operações sobre dados abertos~\cite{}. 
+
+\section{Visão geral de funcionalidades}
+
+Existem diferentes alternativas para a montagem de um repositório de dados. Uma análise comparativa produzida pelo projeto Dataverse\footnote{Ligação:  \url{https://dataverse.org/blog/comparative-review-various-data-repositories}} apresenta uma comparação das principais plataformas de repositórios de dados, tendo em conta três grupos de facetas: Funcionalidades de Software, Controlo/Organização e Conteúdo. Uma outra comparação~\cite{amorimComparison2017} discute em mais profundidade algumas características técnicas de diversas plataformas. Esta análise foca-se apenas nas alternativas disponíveis em regime de código aberto e instaláveis localmente, para poder retirar conclusões relativamente ao modelo de dados por detrás de cada solução de software. 
+
+Tão importante como comparar funcionalidades oferecidas pelas plataformas é estudar quais funcionalidades são mais valorizadas pelos utilizadores destas plataformas. Para responder a esta questão, o Grupo de Interesse das Plataformas de Gestão de Dados de Investigação (RPRD IG) da Research Data Alliance (RDA) compilou uma Matriz de Casos de Uso e Requisitos Funcionais para as Plataformas de Gestão de Dados de Investigação. Esta matriz resultou de um inquérito a 11 grupos que apresentaram os seus casos de uso para repositórios de dados de investigação. Cada um destes grupos classificou a importância de 26 requisitos vulgarmente associados a um repositório de dados. No final, foi atribuída uma pontuação a cada um dos requisitos funcionais, com base na importância que a totalidade dos grupos lhe atribuiu no contexto do seu caso de uso.
+
+De forma a comparar de forma sucinta algumas das plataformas mais utilizadas, é necessário considerar não só a quantidade e variedade de funcionalidades como também a sua importância para a maioria dos utilizadores. Assim, na Figura~\ref{comparacao_repos} apresenta-se não só uma pontuação de funcionalidadesc, como também 
+
+Há muitas formas de categorizar estas plataformas, mas existem duas categorias principais: serviços ``chave-na-mão'', em que todas as necessidades do serviço (alojamento, manutenção, assistência técnica, curadoria ou atribuição de identificadores) faz parte de um pacote oferecido às instituições interessadas em partilhar conjuntos de dados. Em alternativa, apresentam-se as soluções alojadas localmente. Estas diferem em relação às suas alternativas ``chave-na-mão'' na medida em que exigem instalação e manutenção por parte de uma equipa de TI interna à organização. Da mesma forma, o trabalho de curadoria na plataforma também tem que ser levado a cabo inteiramente pelos elementos da organização e geralmente não existe nenhuma obrigação de assistência por parte dos desenvolvedores do software. Contudo, nos projetos de software open-source existe normalmente um fórum público onde os utilizadores podem propor melhorias ao software e reportar \textit{bugs}. Todas estas características devem ser tidas em conta no momento da escolha de uma plataforma de software para montar um repositório de dados.
+
+
+
+
 
 \section{O futuro dos repositórios de dados}
 
