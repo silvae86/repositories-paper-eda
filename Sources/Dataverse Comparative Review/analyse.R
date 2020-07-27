@@ -90,7 +90,7 @@ underGraphTableTotals[underGraphTableTotals[,] == "No - Currently working toward
 # Create a table
 thm <- ttheme_default(colhead = 
                         # first unit is the width, and second the height
-                        list(fg_params=list(cex = 0.75), padding=unit.c(unit(11, "mm"), unit(3, "mm"))),
+                        list(fg_params=list(cex = 0.9), padding=unit.c(unit(12, "mm"), unit(3, "mm"))),
 )
 
 tab = tableGrob(underGraphTableTotals, 
