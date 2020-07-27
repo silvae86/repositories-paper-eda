@@ -10,7 +10,7 @@ if (!require(pacman)) {
 # sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 # sudo apt update
 # sudo apt install r-cran-rgl r-cran-rjags r-cran-snow r-cran-ggplot2 r-cran-igraph r-cran-lme4 r-cran-rjava r-cran-devtools r-cran-roxygen2 r-cran-rjava
-pacman::p_load(readxl,data.table,dplyr,lsa,text2vec,stringr,ggplot2,readODS,grid,gridExtra,reshape2, emojifont)
+pacman::p_load(readxl,data.table,dplyr,lsa,text2vec,stringr,ggplot2,readODS,grid,gridExtra,reshape2,emojifont,scales)
 
 source("./read_data.R")
 source("./get_repo_features.R")
@@ -50,16 +50,20 @@ totals <- as.data.frame(totals)
 totals$platform <- rownames(totals)
 totals <- merge(totals, open_source)
 totals <- merge(totals, free)
+totals <- merge(totals, n_datasets)
+totals <- merge(totals, n_files)
+totals <- merge(totals, n_users)
+totals <- merge(totals, certified)
 
-colnames(totals) <- c("platform","score", "open_source", "free")
+colnames(totals) <- c("platform","score", "open_source", "free", "n_datasets", "n_files", "n_users", "certified")
 
 underGraphTableTotals <- t(totals %>%
                           arrange(desc(score)) %>%
-                          select(c("open_source", "free")))
+                          select(c("open_source", "free", "n_datasets", "n_files", "n_users", "certified")))
 
 # text wrapping for columns of the table under the graph
 
-colwidth <- 6
+colwidth <- 7
 
 wrap_text <- function(names, colwidth)
 {
@@ -67,17 +71,31 @@ wrap_text <- function(names, colwidth)
   names
 }
 
-rownames(underGraphTableTotals) <- wrap_text(c("Código Aberto", "Livre (\"Free To Use\")"), 10)
+rownames(underGraphTableTotals) <- wrap_text(
+  c("Código Aberto", 
+    "Livre (\"Free To Use\")",
+    "Núm. Conjuntos Dados (6/2017)",
+    "Num. Ficheiros (5/2017)",
+    "Num. Utilizadores (5/2017)",
+    "Certificação"
+  ), 10)
 colnames(underGraphTableTotals) <- wrap_text((totals %>% arrange(desc(score)))$platform, colwidth)
+
+underGraphTableTotals[underGraphTableTotals[,] == "No"] <- "Não"
+underGraphTableTotals[underGraphTableTotals[,] == "Yes"] <- "Sim"
+underGraphTableTotals[underGraphTableTotals[,] == "Unknown"] <- "N/D"
+underGraphTableTotals[underGraphTableTotals[,] == "Yes - Data Seal of Approval; World Data System"] <- "Sim\n (DSA+WDS)"
+underGraphTableTotals[underGraphTableTotals[,] == "No - Currently working toward ISO certification."] <- "Não - ISO \nno futuro"
 
 # Create a table
 thm <- ttheme_default(colhead = 
                         # first unit is the width, and second the height
-                        list(fg_params=list(cex = 0.9), padding=unit.c(unit(5, "mm"), unit(colwidth, "mm"))),
+                        list(fg_params=list(cex = 0.75), padding=unit.c(unit(11, "mm"), unit(3, "mm"))),
                       )
 
 tab = tableGrob(underGraphTableTotals, 
                 rows=rownames(underGraphTableTotals),
+                cols = colnames(underGraphTableTotals),
                 theme=thm,
                 vp = NULL)
 
@@ -86,10 +104,14 @@ tab = tableGrob(underGraphTableTotals,
 ggplot(totals, aes(x=reorder(platform,-score), y=score))+
   geom_bar(stat='identity', fill="plum")+
   ylab("Pontuação de funcionalidades") + 
-  xlab("Plataforma") + 
-  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
-  geom_text(data=totals, aes(x=reorder(platform,-score), y=score, label = score), vjust=0) +
-  theme(plot.margin=unit(c(0.2,0.2,7,3),"cm")) + 
-  annotation_custom(tab, xmin=1, xmax=8, ymin=-1000, ymax=-23000)
+  xlab(NULL) + 
+  theme(axis.text = element_text(size=11), 
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+  ) +
+  # wrap labels
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 10)) +
+  geom_text(data=totals, aes(x=reorder(platform,-score), y=(score - 1000), label = score), vjust=0)+
+  theme(plot.margin=unit(c(1.5,1,12.8,2),"cm")) + 
+  annotation_custom(tab, xmin=1, xmax=9, ymin=-10000, ymax=-23000)
 
-
+ggsave("plot.pdf")

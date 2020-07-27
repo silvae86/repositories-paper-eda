@@ -55,4 +55,31 @@ free <- read_excel("Comparative.xlsx",
                           sheet = "Comparative review of data repo", col_names = T) %>%
                           filter(`Software Features` == 'Free To Use')
 
-free <- select_and_add_platforms_column(free, "free")                          
+free <- select_and_add_platforms_column(free, "free")  
+
+
+n_datasets <- read_excel("Comparative.xlsx", 
+                   sheet = "Comparative review of data repo", col_names = T) %>%
+  filter(`Software Features` == 'Total # of published datasets as of July 2017')
+
+n_datasets <- select_and_add_platforms_column(n_datasets, "n_datasets")
+
+
+n_files <- read_excel("Comparative.xlsx", 
+                       sheet = "Comparative review of data repo", col_names = T) %>%
+  filter(`Software Features` == 'Total # of published files as of May 2017')
+
+n_files <- select_and_add_platforms_column(n_files, "n_files")
+
+
+n_users <- read_excel("Comparative.xlsx", 
+                      sheet = "Comparative review of data repo", col_names = T) %>%
+  filter(`Software Features` == 'Total # of public users as of May 2017')
+
+n_users <- select_and_add_platforms_column(n_users, "n_users")
+
+certified <- read_excel("Comparative.xlsx", 
+                      sheet = "Comparative review of data repo", col_names = T) %>%
+  filter(`Software Features` == 'Certification?')
+
+certified <- select_and_add_platforms_column(certified, "certified")
