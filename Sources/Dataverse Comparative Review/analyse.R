@@ -58,8 +58,8 @@ totals <- merge(totals, certified)
 colnames(totals) <- c("platform","score", "open_source", "free", "n_datasets", "n_files", "n_users", "certified")
 
 underGraphTableTotals <- t(totals %>%
-                          arrange(desc(score)) %>%
-                          select(c("open_source", "free", "n_datasets", "n_files", "n_users", "certified")))
+                             arrange(desc(score)) %>%
+                             select(c("open_source", "free", "n_datasets", "n_files", "n_users", "certified")))
 
 # text wrapping for columns of the table under the graph
 
@@ -91,7 +91,7 @@ underGraphTableTotals[underGraphTableTotals[,] == "No - Currently working toward
 thm <- ttheme_default(colhead = 
                         # first unit is the width, and second the height
                         list(fg_params=list(cex = 0.75), padding=unit.c(unit(11, "mm"), unit(3, "mm"))),
-                      )
+)
 
 tab = tableGrob(underGraphTableTotals, 
                 rows=rownames(underGraphTableTotals),
@@ -101,7 +101,7 @@ tab = tableGrob(underGraphTableTotals,
 
 # create plot with table underneath
 # margin: unit(c(top, right, bottom, left), units)
-ggplot(totals, aes(x=reorder(platform,-score), y=score))+
+p <- ggplot(totals, aes(x=reorder(platform,-score), y=score))+
   geom_bar(stat='identity', fill="plum")+
   ylab("Pontuação de funcionalidades") + 
   xlab(NULL) + 
@@ -114,4 +114,4 @@ ggplot(totals, aes(x=reorder(platform,-score), y=score))+
   theme(plot.margin=unit(c(1.5,1,12.8,2),"cm")) + 
   annotation_custom(tab, xmin=1, xmax=9, ymin=-10000, ymax=-23000)
 
-ggsave("plot.pdf")
+ggsave("plot.pdf", plot = p, scale = 1, width = 13.1, height = 9.03, units = "in", dpi = 300, limitsize = T, device=NULL)
