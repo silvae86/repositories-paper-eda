@@ -10,7 +10,7 @@ if (!require(pacman)) {
 # sudo add-apt-repository ppa:c2d4u.team/c2d4u4.0+
 # sudo apt update
 # sudo apt install r-cran-rgl r-cran-rjags r-cran-snow r-cran-ggplot2 r-cran-igraph r-cran-lme4 r-cran-rjava r-cran-devtools r-cran-roxygen2 r-cran-rjava
-pacman::p_load(readxl,data.table,dplyr,lsa,text2vec,stringr,ggplot2,readODS,grid,gridExtra,reshape2)
+pacman::p_load(readxl,data.table,dplyr,lsa,text2vec,stringr,ggplot2,readODS,grid,gridExtra,reshape2, emojifont)
 
 source("./read_data.R")
 source("./get_repo_features.R")
@@ -50,11 +50,11 @@ totals <- as.data.frame(totals)
 totals$platform <- rownames(totals)
 totals <- merge(totals, open_source)
 totals <- merge(totals, free)
-totals <- totals %>%
-          arrange(desc(score))
+
 colnames(totals) <- c("platform","score", "open_source", "free")
 
 underGraphTableTotals <- t(totals %>%
+                          arrange(desc(score)) %>%
                           select(c("open_source", "free")))
 
 # text wrapping for columns of the table under the graph
@@ -68,7 +68,7 @@ wrap_text <- function(names, colwidth)
 }
 
 rownames(underGraphTableTotals) <- wrap_text(c("Código Aberto", "Livre (\"Free To Use\")"), 10)
-colnames(underGraphTableTotals) <- wrap_text(totals$platform, colwidth)
+colnames(underGraphTableTotals) <- wrap_text((totals %>% arrange(desc(score)))$platform, colwidth)
 
 # Create a table
 thm <- ttheme_default(colhead = 
