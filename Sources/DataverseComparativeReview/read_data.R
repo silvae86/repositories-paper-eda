@@ -73,13 +73,27 @@ n_files <- select_and_add_platforms_column(n_files, "n_files")
 
 
 n_users <- read_excel("Comparative.xlsx", 
-                      sheet = "Comparative review of data repo", col_names = T) %>%
+                      sheet = "Comparative review of data repo", 
+                      col_names = T) %>%
   filter(`Software Features` == 'Total # of public users as of May 2017')
 
 n_users <- select_and_add_platforms_column(n_users, "n_users")
 
 certified <- read_excel("Comparative.xlsx", 
-                      sheet = "Comparative review of data repo", col_names = T) %>%
-  filter(`Software Features` == 'Certification?')
+                      sheet = "Comparative review of data repo", 
+                      col_names = T) %>%
+                      filter(`Software Features` == 'Certification?')
 
 certified <- select_and_add_platforms_column(certified, "certified")
+
+infrastructure <- read_excel("Comparative.xlsx", 
+                        sheet = "Comparative review of data repo", 
+                        col_names = T) %>%
+                        filter(`Software Features` == 'Infrastructure is turnkey, installable on premises, or both?')
+
+infrastructure <- select_and_add_platforms_column(infrastructure, "infrastructure")
+
+infrastructure[infrastructure %like% "Both"] <- "Ambos"
+infrastructure[infrastructure %like% "Turnkey"] <- "Só cloud"
+infrastructure[infrastructure %like% "Premises"] <- "Só local"
+
