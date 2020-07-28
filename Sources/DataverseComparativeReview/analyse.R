@@ -74,7 +74,7 @@ wrap_text <- function(names, colwidth)
 
 rownames(underGraphTableTotals) <- wrap_text(
   c("Código Aberto", 
-    "Livre (\"Free To Use\")",
+    "Grátis (\"Free To Use\")",
     "Núm. Conjuntos Dados (6/2017)",
     "Num. Ficheiros (5/2017)",
     "Num. Utilizadores (5/2017)",

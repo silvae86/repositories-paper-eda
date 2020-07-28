@@ -93,7 +93,7 @@ infrastructure <- read_excel("Comparative.xlsx",
 
 infrastructure <- select_and_add_platforms_column(infrastructure, "infrastructure")
 
-infrastructure[infrastructure %like% "Both"] <- "Ambos"
-infrastructure[infrastructure %like% "Turnkey"] <- "Só cloud"
-infrastructure[infrastructure %like% "Premises"] <- "Só local"
+infrastructure[infrastructure %like% "Both"] <- "SaaS + Local"
+infrastructure[infrastructure %like% "Turnkey"] <- "SaaS"
+infrastructure[infrastructure %like% "Premises"] <- "Local"
 
