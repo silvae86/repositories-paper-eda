@@ -317,12 +317,12 @@ Por fim, é necessário considerar o modelo de hospedagem ou infraestrutura do r
 
 \section{O futuro dos repositórios de dados}
 
-Descentralização
-Versionamento de datasets
-Proveniência
-Metadados diversos e específicos do domínio
-APIs extensas para suportar operações de machine actionable dmps
-Computação
+% Descentralização
+% Versionamento de datasets
+% Proveniência
+% Metadados diversos e específicos do domínio
+% APIs extensas para suportar operações de machine actionable dmps
+% Computação
 
 \section{Discussão e conclusões}
 
@@ -332,11 +332,13 @@ Os repositórios têm vindo a assumir um papel cada vez mais importante na divul
 
 Para além da descoberta e interrogação automática dos seus conteúdos por parte de sistemas externos, os repositórios devem oferecer uma interface de interação programática---ou API---completa. Só desta forma poderão suportar a execução de Planos de Gestão de Dados Acionáveis por Máquinas, ou maDMP. Estes modelos vão além dos documentos convencionais, ao servirem de especificação legível, auditável e executável por máquinas das práticas a seguir durante a gestão de dados. Por exemplo, um maDMP pode especificar que determinados conjuntos de dados devem estar disponíveis, devem incluir um DOI nos seus identificadores e os seus metadados devem obedecer a determinada norma: o repositório onde esses dados estiverem depositados tem que ser capaz de responder com essa informação---via API---quando o sistema externo encarregado de assegurar o cumprimento do maDMP o interrogar sobre a presença desses elementos.
 
-%TODO JRS 
+A capacidade de versionamento consequente auditoria transparente às alterações feitas a um conjunto de dados é também uma funcionalidade essencial nos repositórios atuais. Ambas são pré-requisito para a rastreabilidade desses dados, permitindo não só a sua evolução contínua---mesmo após a publicação como anexo a um artigo científico. Ao mesmo tempo, este registo permite atribuir aos autores dessas modificações o devido crédito.
 
-A capacidade de versionamento e auditoria transparente às alterações 
+A atribuição de crédito pelo trabalho de produção e descrição correta de conjuntos de dados é uma das questões mais relevantes para a motivação dos investigadores em todo este processo. As plataformas de repositório desempenham aqui também um papel essencial, pois são elas que devem manter a informação de quem criou ou modificou cada conjunto de dados e seus metadados que permitirá o cálculo de uma métrica de mérito. A inclusão dessa métrica de publicação nos critérios de avaliação institucional dos investigadores torna-se assim tecnicamente possível.
 
-A tecnologia desempenha um papel essencial no suporte à reprodutibilidade dos resultados apresentados nas publicações. Contudo, toda esta tecnologia não pode nunca substituir o papel dos curadores de dados. O investimento na implementação de um repositório deve assim ser alicerçado num igual investimento na formação dos responsáveis pela gestão dos dados de investigação. São essas pessoas que levam a cabo o suporte aos investigadores e que conseguem dessa forma criar um clima de confiança no processo de gestão de dados e por consequência forma salientar a proposta de valor de qualquer solução tecnológica deste género.
+A oferta de capacidades de computação sobre os dados depositados num repositório requer a ligação entre os dados e plataformas de computação como por exemplo os Jupyter Research Notebooks. Desta forma, o repositório guardará não só os dados mas também os processos de análise desses dados que sustenta às conclusões publicadas. Torna-se também mais fácil para terceiros re-executar esses passos, pois reduz-se o número de dependências a instalar para recuperar o seu contexto de execução.
+
+Por último, e em jeito de conclusão, a tecnologia desempenha um papel essencial no suporte à reproducibilidade dos resultados apresentados nas publicações. Contudo, essa mesma tecnologia não pode nunca substituir o papel dos curadores de dados. O investimento na implementação de um repositório deve assim ser alicerçado num igual investimento na formação dos responsáveis pela gestão dos dados de investigação. São esses peritos que levam a cabo o suporte aos investigadores e que conseguem dessa forma criar um clima de confiança no processo de gestão de dados e por consequência forma salientar a proposta de valor de qualquer solução tecnológica que o sustente.
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
