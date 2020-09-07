@@ -2869,7 +2869,7 @@
   \if@twocolumn
   \balance
   \fi\fi}
-\newcommand\acksname{Acknowledgments}
+\newcommand\acksname{Agradecimentos}
 \specialcomment{acks}{%
   \begingroup
   \section*{\acksname}

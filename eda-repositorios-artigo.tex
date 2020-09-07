@@ -126,7 +126,7 @@
 %%
 %% Keywords. The author(s) should pick words that accurately describe
 %% the work being presented. Separate the keywords with commas.
-\keywords{repositorios de dados, ciência aberta, e-Science, Estratégia para os Dados Abertos, Fundação para a Ciência e Tecnologia}
+\keywords{repositórios de dados, ciência aberta, e-Science, Estratégia para os Dados Abertos, Fundação para a Ciência e Tecnologia}
 
 %% A "teaser" image appears between the author and affiliation
 %% information and the body of the document, and typically spans the
@@ -148,12 +148,22 @@
 
 Os princípios FAIR para a gestão de dados de investigação especificam que os dados devem ser Findable (encontráveis), Accessible (acessíveis), Interoperable (interoeráveis) and Reusable (reutilizáveis)~\cite{wilkinson2016fair}. 
 
-Recentemente, um grupo de peritos da Comissão Europeia debruçou-se sobre o problema dos dados FAIR, tendo concluído que os componentes essenciais de um ecossistema FAIR são: políticas, planos de gestão de dados (DMP), identificadores, normas e repositórios~\cite{hodson2018turning}. 
+Recentemente, um grupo de peritos da Comissão Europeia estudou as melhores práticas para tornar os dados de investigação europeus mais FAIR, tendo concluído que os componentes essenciais de um ecossistema FAIR são: políticas, planos de gestão de dados (DMP), identificadores, normas e repositórios~\cite{hodson2018turning}. 
 
+% TODO JRS
 
-Neste artigo serão abordados alguns destes tópicos.
+Este artigo contém 5 secções para além desta introdução. A secção~\ref{sec:o_papel_do_repositorio_na_aplicacao_dos_principios_fair} apresenta uma análise de alto nível dos requisitos a satisfazer por um repositório de dados, tendo os princípios FAIR como linhas orientadoras. 
+%
+Tendo em conta a crescente importância da automação nos processos de gestão de dados como suporte aos Planos de Gestão de Dados accionáveis por máquinas, analisam-se também esses aspetos na secção~\ref{sec:a_automacao_dos_planos_de_gestao_de_dados}.
+%
+Na secção~\ref{sec:comparacao_de_funcionalidades} é apresentada uma comparação entre soluções de software para repositórios, produzida a partir de um estudo do grupo de trabalho RDA sobre plataformas de dados de investigação e uma comparação feita pela Dataverse, após consulta aos principais fornecedores de repositórios.
+%
+Dada a importância da certificação no desenho de um \emph{workflow} de gestão de dados, apresenta-se também na secção~\ref{sec:certificacao} uma discussão sobre a evolução de alguns dos esquemas de certificação de repositórios de dados, em linha com as mais recentes recomendações da Comissão Europeia. 
+%
+O artigo termina com a secção~\ref{sec:discussao_e_conclusoes}, onde se apresentam algumas conclusões e discussão sobre a análise levada a cabo, assim como uma visão do futuro para os repositórios de dados. 
 
-\section{O papel do repositório na aplicação dos princípios FAIR}
+\section{O papel do repositório na aplicação dos princípios FAIR} % (fold)
+\label{sec:o_papel_do_repositorio_na_aplicacao_dos_principios_fair}
 
 Os princípios FAIR são linhas orientadoras para a melhoria dos processos de gestão de dados, abarcando portanto aspetos bastante mais genéricos do que a tecnologia que suporta um repositório de dados. Contudo, dado que este artigo é bastante focado na tecnologia, utilizaremos os princípios FAIR como guiões orientadores para elencar algumas das funcionalidades relevantes de um repositório de dados. 
 
@@ -193,9 +203,115 @@ As licenças a escolher (recomendação R1.1) ficam ao critério da instituiçã
 
 A recomendação R1.2 refere a necessidade de manter um historial que permita estabelecer a proveniência de um conjunto de dados. Enquanto que é relativamente simples manter um historial de modificações dentro de uma plataforma de repositório, o desafio é maior quando se considera que um conjunto de dados pode ser derivado de outro, tendo este último o seu próprio historial de modificações. Mais uma vez existe uma clara vantagem em usar Linked Data como formato de exposição de metadados (incluindo a proveniência) neste cenário. Para tal, é necessário que os repositórios de dados ofereçam um histórico de modificações em Linked Data que obedeça a ontologias como a PROV-O\cite{lebo2013prov} (mais normativa pois é recomendação W3C) ou a PAV~\cite{ciccarese2013pav} (uma alternativa mais simples, também apelidada de \emph{lightweight ontology}). Desta forma, quando uma terceira máquina des-referenciar o conjunto de dados derivado será também interrogado o repositório onde se encontra o conjunto de dados original, e assim sucessivamente se ele próprio também for um conjunto de dados derivado. Desta forma, torna-se transparente e automática a recuperação de todos os dados relativos ao historial de modificações e versões de um conjunto de dados, sem necessidade de indexar todos os recursos e sem que haja lugar à intervenção humana.
 
-É bastante claro que domínios de investigação distintos poderão gerar conjuntos de dados muito diferentes também. Como tal, o processo de descrição dos mesmos deve também ser adaptado. Satisfazer a recomendação R1.3, que preconiza que os dados e metadados devem obedecer às normas vigentes em cada domínio requer suporte por parte do software de repositório, que deve ser flexível ao ponto de permitir a parametrização de múltiplos esquemas de metadados para distintos domínios. Deverá também permitir a escolha e combinação de múltiplos descritores (genéricos e específicos do domínio do conjunto de dados em depósito) aquando do preenchimento do registo de metadados, sejam esses descritores genéricos ou específicos de domínio. É preciso também não esquecer o trabalho fundamental dos curadores no apoio institucional aos seus investigadores, pois a escolha dos descritores mais adequados a cada conjunto de dados
+É bastante claro que domínios de investigação distintos poderão gerar conjuntos de dados muito diferentes também. Como tal, o processo de descrição dos mesmos deve também ser adaptado. Satisfazer a recomendação R1.3, que preconiza que os dados e metadados devem obedecer às normas vigentes em cada domínio requer suporte por parte do software de repositório, que deve ser flexível ao ponto de permitir a parametrização de múltiplos esquemas de metadados para distintos domínios. Deverá também permitir a escolha e combinação de múltiplos descritores (genéricos e específicos do domínio do conjunto de dados em depósito) aquando do preenchimento do registo de metadados, sejam esses descritores genéricos ou específicos de domínio. É preciso também não esquecer o trabalho fundamental dos curadores no apoio institucional aos seus investigadores, pois a escolha dos descritores mais adequados a cada conjunto de dados.
 
-\section{Certificação}
+% section o_papel_do_repositorio_na_aplicacao_dos_principios_fair (end)
+
+\section{A automação dos planos de gestão de dados} % (fold)
+\label{sec:a_automacao_dos_planos_de_gestao_de_dados}
+
+Qualquer processo de gestão de dados de investigação deve começar com o desenho de um Plano de Gestão de Dados (ou DMP, do inglês Data Management Plan). Um DMP é um documento tipicamente escrito e aprovado antes do início de um projeto de investigação. Em alguns casos, é já requisito obrigatório em chamadas de propostas de projetos de investigação suportados por fundos públicos~\cite{Foundation2011}) e que especifica todos os aspetos relacionados com a gestão dos dados produzidos ao longo do projeto~\cite{10.1371/journal.pcbi.1004525}.  
+
+Entre outros aspetos, que dados serão produzidos no contexto de um projeto, que metadados serão anexados aos dados publicados, onde eles irão ficar disponíveis após o fim do projeto, entre outros pontos. No Reino Unido, o Digital Curation Centre disponibiliza tanto um guião~\cite{jones_dmp} para a escrita deste tipo de documentos como uma ferramenta online, o DMP Online~\footnote{\url{Ligação: https://dmponline.dcc.ac.uk}}, que assiste os investigadores e curadores na elaboração dos seus DMP, assistidos por uma base de dados de templates de DMP aceites por diferentes entidades financiadoras.
+
+Com a grande quantidade de dados de investigação gerada diariamente surge a necessidade de acompanhar e monitorizar a implementação de DMP, mas de forma automática. Três exemplos simples de operações frequentes, repetitivas e facilmente automatizáveis são: 
+
+\begin{itemize}
+    \item Simples verificação da disponibilidade dos dados depositados
+    \item Controlo de qualidade dos metadados associados aos conjuntos de dados acabados
+    \item Verificação das licenças associadas aos conjuntos de dados
+\end{itemize}
+
+Para lidar com estas operações e outras de forma mais automática surgiram os chamados DMP Accionáveis por Máquina (maDMP, do inglês \textit{Machine-Actionable DMP}). Desta forma é possível assim libertar os curadores de dados para outras operações menos automatizáveis, como o suporte direto aos investigadores ou atividades de formação.
+
+Como preconizado pelos autores das 10 regras para maDMP~\cite{miksa_tomasz_2018_1172673}, deve ser possível aos sistemas informáticos levar a cabo ações em nome das partes interessadas no processo de gestão de dados de investigação. Operações dadas como exemplo incluem a recolha automática de informação administrativa relevante para anotação dos recursos produzidos. Exemplos dessa informação incluem, por exemplo, as recuperação de referências aos financiadores dos projetos, os currículos dos autores dos conjuntos de dados assim como as informações corretas das instituições de acolhimento dos investigadores. 
+
+Esta necessidade de suporte a automação e integração tem implicações vastas do ponto de vista do desenho e funcionalidades de um repositório de dados, na medida em que a solução deve disponibilizar uma API (\textit{Application Programming Interface}) completa e bem documentada, de forma a permitir a sistemas externos executar estas operações sem a necessidade de intervenção humana.
+
+\subsection{O papel da interoperabilidade na descoberta de conjuntos de dados} % (fold)
+\label{sub:o_papel_da_interoperabilidade_na_descoberta_de_conjuntos_de_dados}
+
+Ao mesmo tempo, a integração com diretórios de dados deve ser transparente e assente em protocolos de interoperabilidade standard. Estes agregadores são portais que indexam o conteúdo dos repositórios para facilitar a pesquisa e descoberta de recursos neles contidos. Exemplos destes agregadores são, por exemplo, o portal re3data da DataCite~\footnote{Ligação: \url{https://www.re3data.org/}} ou o Dataset Search da Google\footnote{Ligação: \url{https://datasetsearch.research.google.com/}}.
+
+Para facilitar a indexação dos conteúdos dos repositórios, estes implementam suporte ao protocolo OAI-PMH (Open Access Initiative Protocol for Metadata Harvesting). Este protocolo expõe os metadados de todos os registos no repositório de forma paginada, para que seja lida sequencialmente e indexada; contudo, não possibilita a pesquisa e recuperação de registos específicos por termos contidos nos registos de metadados, por exemplo. Para conseguir tal funcionalidade é necessário proceder à inserção de todos os documentos num índice de pesquisa como é o caso do Lucene ou Solr. Uma consequência óbvia é a necessidade de manutenção de cópias dos registos e atualizações periódicas de todo o índice---uma operação lenta e dispendiosa em termos de recursos informáticos, que coloca todo o custo de manutenção do serviço do lado dos clientes.
+
+Uma situação oposta ocorre com a adoção de Dados Ligados (\textit{Linked Data}) na representação de metadados para conjuntos de dados de investigação. Esta representação de dados vem eliminar a necessidade de indexação periódica de conteúdos e melhorar muito a precisão das pesquisas, caso os dados sejam estruturados de acordo com uma ou mais ontologias. Uma ontologia é definida, na Ciência da Informação, como uma \textit{especificação de uma conceptualização}\cite{gruber1995toward}, que permite às máquinas, por exemplo, interpretar o significado dos tipos de entidades representadas num sistema e as relações que se podem estabelecer entre elas.
+
+A representação via Linked Data permite uma maior descentralização da carga de pesquisas sobre os servidores onde os repositórios estão alojados. Reduz também a necessidade de indexação porque é possível correr pesquisas nos próprios servidores sem ter que primeiro indexar todo o seu conteúdo e permite aos clientes do serviço recuperar conjuntos de dados com muito mais precisão do que nos casos em que se usa um índice de pesquisa simples baseado em palavras-chave, pois é possível especificar critérios muito detalhados sob a forma interrogações SPARQL.
+
+A disponibilização de Linked Data por parte dos repositórios tem, contudo, um custo para quem hospeda esses repositórios. As consultas SPARQL são exigentes do ponto de vista computacional e, se um número elevado de utilizadores (máquinas ou humanos) aceder ao website ao mesmo tempo, é fácil afetar os tempos de resposta da infraestrutura. Isto é especialmente relevante quando se considera a funcionalidade de pesquisa federada, onde múltiplos servidores podem ser contactados para conseguir obter os resultados pretendidos por uma única pesquisa iniciada em qualquer dos nós da federação.
+
+O futuro dos repositórios de dados deve passar assim por uma solução híbrida, onde servidores e clientes partilham informação para possibilitar também a partilha do esforço de interrogação e descoberta de dados. Soluções como a Linked Data Fragments\cite{VERBORGH2016184} propõem a combinação de interrogações sobre \textit{endpoints} tradicionais (no servidor do repositório que expõe Dados Ligados) com a interrogação a dados locais a cada cliente, reduzindo assim a carga sobre o servidor.
+
+% subsection o_papel_da_interoperabilidade_na_descoberta_de_conjuntos_de_dados (end)
+
+\subsection{Repositórios como plataformas de computação} % (fold)
+\label{sub:repositorios_como_plataformas_de_computacao}
+
+Cada vez mais, o valor de um repositório de dados reside na facilidade de reutilização dos dados nele contidos. Tecnologias recentes como os Research Notebooks e a Containerização permitem tornar os algoritmos mais portáteis portáteis, de forma a poderem ser executados remotamente sobre os dados depositados num repositório. O papel deste torna-se assim muito mais do que o de simples armazém combinado com um motor de busca sobre conjuntos de dados.
+
+Os Research Notebooks são cadernos de laboratório interactivos que encerram em si os dados-base, código de processamento que transforma os dados base em dados processados, e até mesmo visualizações e gráficos gerados na hora com base nos dados e no código do Notebook.
+
+Os Notebooks vêm também possibilitar suportar uma dos maiores mudanças no paradigma de publicação científica dos últimos tempos. A combinação elegante de texto, trechos de código e visualizações apelativas permitiu a criação dos chamados ``Web Journals'' como por exemplo o distill.pub. Estes distinguem-se das publicações convencionais, ao incorporar visualizações interativas no próprio texto dos artigos científicos, fomentando a experimentação através da manipulação de parâmetros de entrada dos algoritmos, produzindo um feedback visual imediato aos leitores. Toda a computação tem, no entanto, que ser executada em tempo real, o que implica a montagem de uma réplica do ambiente de processamento por detrás do portal web que suporta o journal.
+
+Com o problema do empacotamento do processamento e dos dados a ser abordado pelos Notebooks, resta o problema de onde realizar a execução desses algoritmos. Nem todos os conjuntos de dados se prestam a ser transportados pela rede em tempo útil para a execução de um determinado algoritmo, pois em certas disciplinas o seu tamanho pode ascender a centenas de gigabytes ou mesmo terabytes. Assim sendo, é necessário levar a computação até aos dados em vez de ter que transmitir os dados até ao local onde se realiza a computação. Este tipo de computação que ocorre junto dos dados é um paradigma é implementado em portais de computação como o D4Science~\footnote{Ligação: \url{https://www.d4science.org}} ou o EUDAT B2Stage\footnote{Ligação: \url{https://www.eudat.eu/b2stage}}. Com a esperada descentralização e interoperabilidade que se espera dos repositórios de dados defendida pelo GEI da EOSC, espera-se que cada repositório seja capaz de oferecer capacidade de computação local a pequena escala e junto das fontes de dados. Este cenário é mais próximo do \emph{edge computing}, um termo mais vulgarmente associado às aplicações IoT. Por contraponto ao \emph{cloud computing}, onde todos os recursos se encontram na nuvem e os dados têm que ser cuidadosamente aproximados dos nós de computação (mesmo em termos geográficos) para reduzir tráfego na rede, o \emph{edge computing} defende que cada nó da rede deve ter uma pequena mas importante capacidade de computação para executar operações à medida que os dados são produzidos ou atualizados. 
+
+Quando se fala de distribuição de computação e reprodutibilidade, surge imediatamente a necessidade de replicar também todo o ambiente de execução no qual essa computação é executada. Sem uma solução de virtualização, isso implica a instalação de um sistema operativo e de todas as dependências relevantes para a execução do código relevante. Este é um processo manual e dispendioso que torna claramente necessário assegurar a portabilidade do ambiente de execução, tornando-o instalável automaticamente em qualquer nó com o mínimo de dependências. 
+
+A containerização é uma tecnologia de virtualização que, quando comparada com as máquinas virtuais convencionais, elimina a necessidade de virtualizar um sistema operativo para executar um determinado programa, substituindo essas dependências por um ambiente de execução (ou \textit{runtime}) próprio. O exemplo mais comum de ambiente de virtualização é o Docker\footnote{Ligação: \url{https://www.docker.com/}}. Esta eficiência torna possível a um repositório de dados executar algoritmos directamente sobre os dados nele depositados e retornar apenas os resultados aos clientes que pedem esses processamentos, em vez de exigir a descarga dos dados para o cliente. Talvez a funcionalidade mais interessante para um repositório de dados é a possibilidade de especificar todos os passos de instalação de dependências necessárias à execução dos algoritmos de processamento de dados, reduzindo em larga medida os problemas de replicação do ambiente de execução de determinado algoritmo.
+
+% subsection repositorios_como_plataformas_de_computacao (end)
+
+\subsection{A \emph{blockchain} e as suas aplicações aos Dados Abertos} % (fold)
+\label{sub:a_emph_blockchain_e_as_suas_aplicacoes_aos_dados_abertos}
+
+Num futuro de repositórios de dados descentralizados e interligados num ambiente descentralizado será necessário conceber soluções para assegurar a autenticidade da informação colocada em cada nó da federação. Em particular, a criação de um \emph{ledger} de transações distribuído, como por exemplo uma \emph{blockchain} envolvendo os repositórios dda federação, reduz a dependência de entidades terceiras---como os emissores de certificados---para assegurar a autenticidade dos dados. Este tema já está a ser alvo de investigação, com o objetivo de descobrir formas de utilização da blockchain para assegurar a validade dos resultados de operações sobre dados abertos~\cite{10.1007/978-3-030-23946-6_28}. É portanto claro o potencial de aplicação deste tipo de tecnologias aos diversos aspetos da gestão de dados abertos, destacando-se dois pontos:
+
+\begin{itemize}
+	\item \textbf{Proveniência}: Através de um registo distribuído de modificações feitas a dados e metadados será possível assegurar a sua autenticidade e não-repúdio relativamente à autoria de quaisquer operações realizadas sobre os dados. Esta prática deve estar presente antes, durante e após a publicação dos conjuntos de dados; quando aplicada antes da publicação, permite rastrear todas as modificações feitas ao longo do tempo, para reduzir situações de \emph{p-hacking}\cite{10.1371/journal.pbio.1002106}, por exemplo. Após a publicação, um registo distribuído de alterações permite aos autores continuar a modificar um conjunto de dados após a publicação do conjunto de dados considerado ``final'', de forma completamente transparente. Uma outra vantagem é a resiliência do sistema, pois mesmo que o repositório onde um conjunto de dados está publicado seja desligado, esse historial de modificações continuará registado nos restantes nós da \emph{blockchain}.
+	\item \textbf{Fiabilidade de resultados}: Regra geral, um valor só é registado na \emph{blockchain} se existir um consenso na rede de computadores que colaboram nessa \emph{blockchain}. Este mecanismo pode ser usado para atestar a reprodutibilidade das operações de transformação realizadas sobre um conjunto de dados. Neste caso em particular, só após um determinado número de nós (dependendo da política em vigor na \emph{blockchain}) levarem a cabo as mesmas operações e confirmarem os resultados é que é criado o \emph{consenso} necessário à escrita para a \emph{blockchain}, passando aquela operação a fazer parte do historial de operações sobre aquele conjunto de dados. 
+\end{itemize}
+
+% subsection a_emph_blockchain_e_as_suas_aplicacoes_aos_dados_abertos (end)
+
+% section a_automacao_dos_planos_de_gestao_de_dados (end)
+
+\section{Comparação de funcionalidades} % (fold)
+\label{sec:comparacao_de_funcionalidades}
+
+Existem diferentes alternativas para a montagem de um repositório de dados. Uma análise comparativa produzida pelo projeto Dataverse\footnote{Ligação:  \url{https://dataverse.org/blog/comparative-review-various-data-repositories}} apresenta uma comparação das principais plataformas de repositórios de dados, tendo em conta três grupos de facetas: Funcionalidades de Software, Controlo/Organização e Conteúdo. Uma outra comparação~\cite{amorimComparison2017} discute em mais profundidade algumas características técnicas de diversas plataformas. Esta análise foca-se apenas nas alternativas disponíveis em regime de código aberto e instaláveis localmente, de forma a poder retirar conclusões relativamente ao modelo de dados por detrás de cada solução de software. 
+
+Tão importante como comparar funcionalidades oferecidas pelas plataformas é estudar quais funcionalidades são mais valorizadas pelos utilizadores destas plataformas. Para responder a esta questão, o Grupo de Interesse das Plataformas de Gestão de Dados de Investigação (RPRD IG) da Research Data Alliance (RDA) compilou uma Matriz de Casos de Uso e Requisitos Funcionais para as Plataformas de Gestão de Dados de Investigação. Esta matriz resultou de um inquérito a 11 grupos que apresentaram os seus casos de uso para repositórios de dados de investigação. Cada um destes grupos classificou a importância de 26 requisitos vulgarmente associados a um repositório de dados. No final, foi atribuída uma pontuação a cada um dos requisitos funcionais, com base na importância que a totalidade dos grupos lhe atribuiu no contexto do seu caso de uso.
+
+De forma a comparar de forma sucinta algumas das plataformas mais utilizadas, é necessário considerar não só a quantidade e variedade de funcionalidades como também a sua importância para a maioria dos utilizadores. Assim, na Figura~\ref{comparacao_repos} apresenta-se não só uma pontuação de funcionalidades, como também algumas das principais características dessas plataformas. Nesta figura, apresenta-se primeiramente um gráfico de barras que ordena as plataformas de acordo com uma ``Pontuação de funcionalidades''. Esta foi determinada associando manualmente os requisitos funcionais da RDA às características listadas na comparação de repositórios apresentada pela DataVerse, e calculando o produto de cada relação estabelecida pela importância dada ao requisito pela RDA. Desta forma, foi possível atribuir diferentes \emph{pesos} às características desta última comparação~\footnote{Os dados base deste estudo estão disponíveis no repositório GitHub deste relatório, como materiais auxiliares. Ligação: \url{https://github.com/silvae86/repositories-paper-eda}}. 
+
+\begin{figure*}[h!t!]
+\centering
+\includegraphics[width=0.95\textwidth]{Sources/DataverseComparativeReview/plot.pdf}
+\caption{Análise comparativa de diferentes plataformas de \emph{software} para repositórios de dados}
+\end{figure*}
+
+A figura apresenta também uma tabela com algumas características mais relevantes de cada plataforma:
+
+\begin{itemize}
+	\item \textbf{Código Aberto}\\
+	Na primeira linha distinguem-se as soluções que estão disponíveis em regime de código aberto daquelas em que não é o caso. O facto do código de uma solução estar disponível em acesso aberto tem inúmeras vantagens, desde que haja uma comunidade disposta a manter esse software. Exemplos são uma maior segurança, pois o facto do código ser aberto facilita a correção rápida de falhas de segurança por parte da comunidade, ao invés de ter que esperar pela correção por parte da equipa de uma empresa. Qualquer pessoa tem também a liberdade de modificar e melhorar o software para satisfazer uma determinada necessidade, sendo que esses melhoramentos poderão potencialmente ser incluídos no tronco comum da solução, caso se verifique que o requisito se verifica em outras comunidades e os desenvolvedores assim o entenderem. Esta flexibilidade pode proporcionar um ritmo e velocidade de desenvolvimento mais elevado do que as soluções proprietárias, que têm equipas de desenvolvimento limitadas; contudo, a própria comunidade de desenvolvimento é responsável pela manutenção da qualidade do código. O modelo de código aberto não invalida a hipótese das entidades que suportam um repositório realizarem alterações pagas ao código, num cenário semelhante à consultoria de implementação do repositório. Nestes casos, o ``produto'' em si não é o software, mas sim o serviço de instalação e personalização da solução de código aberto numa determinada instituição. De qualquer forma, o código desenvolvido no contexto destas implementações pode também ser incluído no tronco comum, beneficiando toda a comunidade que utiliza esse software. É também normal encontrar nos projetos de software open-source um conjunto de fóruns públicos onde os utilizadores podem propor melhorias ao software e reportar \textit{bugs}.
+	\item \textbf{Grátis} 
+	Quase todas as soluções em análise são completamente grátis ou oferecem um nível de serviço base grátis. Os sistemas que funcionam com base na cloud incluem normalmente uma capacidade de armazenamento de dados limitada, sendo que os utilizadores podem adquirir um pacote de armazenamento maior se necessitarem. As soluções que podem ser instaladas localmente apenas dependem da capacidade de armazenamento do servidor no qual são instaladas.
+	\item \textbf{Número de conjuntos de dados, ficheiros e utilizadores}
+	O número de recursos geridos pelas plataformas e o número de utilizadores que confiam nessas plataformas para a sua gestão de dados é uma importante métrica da sua maturidade. 
+	\item \textbf{Certificação}
+	A certificação de repositórios continuará a assumir relevância aquando da adoção de uma solução de repositório. No caso das soluções SaaS, a certificação do repositório pode beneficiar todas as instituições que contratem os serviços dessas plataformas, pois todos os seus investigadores poderão mencionar esse aspeto na escrita dos DMP que anexam às suas propostas de projetos. As soluções SaaS têm portanto todo o interesse em procurar a certificação para oferecer mais valor aos seus clientes. No caso das alternativas instaladas e mantidas localmente, as funcionalidades da solução de software em particular não são condição suficiente para a certificação. Contudo, as funcionalidades da plataforma a seleccionar não devem impedir a futura certificação do repositório. 
+	\item \textbf{Infraestrutura} 
+	Esta categoria distingue as plataformas que só estão disponíveis como SaaS daquelas que podem também ser instaladas e geridas localmente.
+\end{itemize}
+
+Por fim, é necessário considerar o modelo de hospedagem ou infraestrutura do repositório, que está geralmente ligado ao modelo de negócio das entidades que o suportam. Neste domínio, existem as soluções SaaS\footnote\emph{{Software as a Service}}, que podem ser vistos como ``chave-na-mão''. Nestes modelos, toda a infraestrutura e serviços por detrás da página web do repositório (alojamento, manutenção, assistência técnica, curadoria ou atribuição de identificadores) faz parte de um pacote oferecido às instituições interessadas nesse repositório. Em alternativa, apresentam-se as soluções alojadas localmente, que diferem das soluções SaaS na medida em que exigem instalação e manutenção por parte de uma equipa de TI interna à organização. Da mesma forma, o trabalho de curadoria na plataforma também tem que ser levado a cabo inteiramente pelos elementos da organização e geralmente não existe nenhuma obrigação de assistência por parte dos desenvolvedores do software. 
+
+% section comparacao_de_funcionalidades (end)
+
+\section{Certificação} % (fold)
+\label{sec:certificacao}
 
 Para além dos princípios FAIR, que se apresentam como linhas gerais para aquilo que um processo de gestão de dados deve proporcionar, surgiram recentemente os princípios TRUST~\cite{TRUSTprinciples}. Estes focam-se no problema da confiança nas infraestruturas, organizações e qualidade dos dados de investigação. Estes princípios oferecem, de acordo com os autores, uma \emph{framework} de discussão para ajudar a melhorar a confiança de todas as partes interessadas no processo de gestão de dados. Estas partes interessadas vão desde os próprios investigadores, passando pelas instituições académicas ou de ciência que os acolhem, as entidades financiadoras, entre outros~\cite{DCC_stakeholders}. 
 
@@ -210,12 +326,16 @@ A certificação é um processo custoso e demorado que constitui um projeto por 
     \centering
     \scriptsize
     \begin{tabular}{|c|c|c|}
-    \textbf{Métrica} & \textbf{DSA} & \textbf{nestor Seal} \\
+	\hline
+    \textbf{Métrica} & \textbf{DSA} & \textbf{nestor Seal}\\
+	\hline
+	\hline
 	Fee for process & 0 €  & 500€ \\
     Project Duration (meses) & 9 & 12 \\
 	Pessoas-Mês\footnote{Calculado com base nas regras UE FP5, de 8 horas por dia e 17,5 dias por mês} & 3.7 & 11\\
 	Pessoas envolvidas & 7 & 16\\
-	Unidades organizacionais envolvidas & 5 & 8
+	Unidades organizacionais envolvidas & 5 & 8\\
+	\hline
     \end{tabular}
     \scriptsize
 \end{table}
@@ -265,97 +385,10 @@ Este processo de certificação é citado nas Recomendações 9 e 13 do relatór
 
 % subsection core_trust_seal (end)
 
+% section certificacao (end)
 
-\section{Automatização da gestão de dados}
-
-Qualquer processo de gestão de dados de investigação deve começar com o desenho de um Plano de Gestão de Dados (ou DMP, do inglês Data Management Plan). Um DMP é um documento tipicamente escrito e aprovado antes do início de um projeto de investigação. Em alguns casos, é já requisito obrigatório em chamadas de propostas de projetos de investigação suportados por fundos públicos~\cite{Foundation2011}) e que especifica todos os aspetos relacionados com a gestão dos dados produzidos ao longo do projeto~\cite{10.1371/journal.pcbi.1004525}.  
-
-Entre outros aspetos, que dados serão produzidos no contexto de um projeto, que metadados serão anexados aos dados publicados, onde eles irão ficar disponíveis após o fim do projeto, entre outros pontos. No Reino Unido, o Digital Curation Centre disponibiliza tanto um guião~\cite{jones_dmp} para a escrita deste tipo de documentos como uma ferramenta online, o DMP Online~\footnote{\url{Ligação: https://dmponline.dcc.ac.uk}}, que assiste os investigadores e curadores na elaboração dos seus DMP, assistidos por uma base de dados de templates de DMP aceites por diferentes entidades financiadoras.
-
-Com a grande quantidade de dados de investigação gerada diariamente surge a necessidade de acompanhar e monitorizar a implementação de DMP, mas de forma automática. Três exemplos simples de operações frequentes, repetitivas e facilmente automatizáveis são: 
-
-\begin{itemize}
-    \item Simples verificação da disponibilidade dos dados depositados
-    \item Controlo de qualidade dos metadados associados aos conjuntos de dados acabados
-    \item Verificação das licenças associadas aos conjuntos de dados
-\end{itemize}
-
-Para lidar com estas operações e outras de forma mais automática surgiram os chamados DMP Accionáveis por Máquina (maDMP, do inglês \textit{Machine-Actionable DMP}). Desta forma é possível assim libertar os curadores de dados para outras operações menos automatizáveis, como o suporte direto aos investigadores ou atividades de formação.
-
-Como preconizado pelos autores das 10 regras para maDMP~\cite{miksa_tomasz_2018_1172673}, deve ser possível aos sistemas informáticos levar a cabo ações em nome das partes interessadas no processo de gestão de dados de investigação. Operações dadas como exemplo incluem a recolha automática de informação administrativa relevante para anotação dos recursos produzidos. Exemplos dessa informação incluem, por exemplo, as recuperação de referências aos financiadores dos projetos, os currículos dos autores dos conjuntos de dados assim como as informações corretas das instituições de acolhimento dos investigadores. 
-
-Esta necessidade de suporte a automação e integração tem implicações vastas do ponto de vista do desenho e funcionalidades de um repositório de dados, na medida em que a solução deve disponibilizar uma API (\textit{Application Programming Interface}) completa e bem documentada, de forma a permitir a sistemas externos executar estas operações sem a necessidade de intervenção humana.
-
-\subsection{O papel da interoperabilidade na descoberta de conjuntos de dados}
-
-Ao mesmo tempo, a integração com diretórios de dados deve ser transparente e assente em protocolos de interoperabilidade standard. Estes agregadores são portais que indexam o conteúdo dos repositórios para facilitar a pesquisa e descoberta de recursos neles contidos. Exemplos destes agregadores são, por exemplo, o portal re3data da DataCite~\footnote{Ligação: \url{https://www.re3data.org/}} ou o Dataset Search da Google\footnote{Ligação: \url{https://datasetsearch.research.google.com/}}.
-
-Para facilitar a indexação dos conteúdos dos repositórios, estes implementam suporte ao protocolo OAI-PMH (Open Access Initiative Protocol for Metadata Harvesting). Este protocolo expõe os metadados de todos os registos no repositório de forma paginada, para que seja lida sequencialmente e indexada; contudo, não possibilita a pesquisa e recuperação de registos específicos por termos contidos nos registos de metadados, por exemplo. Para conseguir tal funcionalidade é necessário proceder à inserção de todos os documentos num índice de pesquisa como é o caso do Lucene ou Solr. Uma consequência óbvia é a necessidade de manutenção de cópias dos registos e atualizações periódicas de todo o índice---uma operação lenta e dispendiosa em termos de recursos informáticos, que coloca todo o custo de manutenção do serviço do lado dos clientes.
-
-Uma situação oposta ocorre com a adoção de Dados Ligados (\textit{Linked Data}) na representação de metadados para conjuntos de dados de investigação. Esta representação de dados vem eliminar a necessidade de indexação periódica de conteúdos e melhorar muito a precisão das pesquisas, caso os dados sejam estruturados de acordo com uma ou mais ontologias. Uma ontologia é definida, na Ciência da Informação, como uma \textit{especificação de uma conceptualização}\cite{gruber1995toward}, que permite às máquinas, por exemplo, interpretar o significado dos tipos de entidades representadas num sistema e as relações que se podem estabelecer entre elas.
-
-A representação via Linked Data permite uma maior descentralização da carga de pesquisas sobre os servidores onde os repositórios estão alojados. Reduz também a necessidade de indexação porque é possível correr pesquisas nos próprios servidores sem ter que primeiro indexar todo o seu conteúdo e permite aos clientes do serviço recuperar conjuntos de dados com muito mais precisão do que nos casos em que se usa um índice de pesquisa simples baseado em palavras-chave, pois é possível especificar critérios muito detalhados sob a forma interrogações SPARQL.
-
-A disponibilização de Linked Data por parte dos repositórios tem, contudo, um custo para quem hospeda esses repositórios. As consultas SPARQL são exigentes do ponto de vista computacional e, se um número elevado de utilizadores (máquinas ou humanos) aceder ao website ao mesmo tempo, é fácil afetar os tempos de resposta da infraestrutura. Isto é especialmente relevante quando se considera a funcionalidade de pesquisa federada, onde múltiplos servidores podem ser contactados para conseguir obter os resultados pretendidos por uma única pesquisa iniciada em qualquer dos nós da federação.
-
-O futuro dos repositórios de dados deve passar assim por uma solução híbrida, onde servidores e clientes partilham informação para possibilitar também a partilha do esforço de interrogação e descoberta de dados. Soluções como a Linked Data Fragments\cite{VERBORGH2016184} propõem a combinação de interrogações sobre \textit{endpoints} tradicionais (no servidor do repositório que expõe Dados Ligados) com a interrogação a dados locais a cada cliente, reduzindo assim a carga sobre o servidor.
-
-\subsection{Repositórios como plataformas de computação}
-
-Cada vez mais, o valor de um repositório de dados reside na facilidade de reutilização dos dados nele contidos. Tecnologias recentes como os Research Notebooks e a Containerização permitem tornar os algoritmos mais portáteis portáteis, de forma a poderem ser executados remotamente sobre os dados depositados num repositório. O papel deste torna-se assim muito mais do que o de simples armazém combinado com um motor de busca sobre conjuntos de dados.
-
-Os Research Notebooks são cadernos de laboratório interactivos que encerram em si os dados-base, código de processamento que transforma os dados base em dados processados, e até mesmo visualizações e gráficos gerados na hora com base nos dados e no código do Notebook.
-
-Os Notebooks vêm também possibilitar suportar uma dos maiores mudanças no paradigma de publicação científica dos últimos tempos. A combinação elegante de texto, trechos de código e visualizações apelativas permitiu a criação dos chamados ``Web Journals'' como por exemplo o distill.pub. Estes distinguem-se das publicações convencionais, ao incorporar visualizações interativas no próprio texto dos artigos científicos, fomentando a experimentação através da manipulação de parâmetros de entrada dos algoritmos, produzindo um feedback visual imediato aos leitores. Toda a computação tem, no entanto, que ser executada em tempo real, o que implica a montagem de uma réplica do ambiente de processamento por detrás do portal web que suporta o journal.
-
-Com o problema do empacotamento do processamento e dos dados a ser abordado pelos Notebooks, resta o problema de onde realizar a execução desses algoritmos. Nem todos os conjuntos de dados se prestam a ser transportados pela rede em tempo útil para a execução de um determinado algoritmo, pois em certas disciplinas o seu tamanho pode ascender a centenas de gigabytes ou mesmo terabytes. Assim sendo, é necessário levar a computação até aos dados em vez de ter que transmitir os dados até ao local onde se realiza a computação. Este tipo de computação que ocorre junto dos dados é um paradigma é implementado em portais de computação como o D4Science~\footnote{Ligação: \url{https://www.d4science.org}} ou o EUDAT B2Stage\footnote{Ligação: \url{https://www.eudat.eu/b2stage}}. Com a esperada descentralização e interoperabilidade que se espera dos repositórios de dados defendida pelo GEI da EOSC, espera-se que cada repositório seja capaz de oferecer capacidade de computação local a pequena escala e junto das fontes de dados. Este cenário é mais próximo do \emph{edge computing}, um termo mais vulgarmente associado às aplicações IoT. Por contraponto ao \emph{cloud computing}, onde todos os recursos se encontram na nuvem e os dados têm que ser cuidadosamente aproximados dos nós de computação (mesmo em termos geográficos) para reduzir tráfego na rede, o \emph{edge computing} defende que cada nó da rede deve ter uma pequena mas importante capacidade de computação para executar operações à medida que os dados são produzidos ou atualizados. 
-
-Quando se fala de distribuição de computação e reprodutibilidade, surge imediatamente a necessidade de replicar também todo o ambiente de execução no qual essa computação é executada. Sem uma solução de virtualização, isso implica a instalação de um sistema operativo e de todas as dependências relevantes para a execução do código relevante. Este é um processo manual e dispendioso que torna claramente necessário assegurar a portabilidade do ambiente de execução, tornando-o instalável automaticamente em qualquer nó com o mínimo de dependências. 
-
-A containerização é uma tecnologia de virtualização que, quando comparada com as máquinas virtuais convencionais, elimina a necessidade de virtualizar um sistema operativo para executar um determinado programa, substituindo essas dependências por um ambiente de execução (ou \textit{runtime}) próprio. O exemplo mais comum de ambiente de virtualização é o Docker\footnote{Ligação: \url{https://www.docker.com/}}. Esta eficiência torna possível a um repositório de dados executar algoritmos directamente sobre os dados nele depositados e retornar apenas os resultados aos clientes que pedem esses processamentos, em vez de exigir a descarga dos dados para o cliente. Talvez a funcionalidade mais interessante para um repositório de dados é a possibilidade de especificar todos os passos de instalação de dependências necessárias à execução dos algoritmos de processamento de dados, reduzindo em larga medida os problemas de replicação do ambiente de execução de determinado algoritmo.
-
-\subsection{A \emph{blockchain} e as suas aplicações aos Dados Abertos}
-
-Num futuro de repositórios de dados descentralizados e interligados num ambiente descentralizado será necessário conceber soluções para assegurar a autenticidade da informação colocada em cada nó da federação. Em particular, a criação de um \emph{ledger} de transações distribuído, como por exemplo uma \emph{blockchain} envolvendo os repositórios dda federação, reduz a dependência de entidades terceiras---como os emissores de certificados---para assegurar a autenticidade dos dados. Este tema já está a ser alvo de investigação, com o objetivo de descobrir formas de utilização da blockchain para assegurar a validade dos resultados de operações sobre dados abertos~\cite{10.1007/978-3-030-23946-6_28}. É portanto claro o potencial de aplicação deste tipo de tecnologias aos diversos aspetos da gestão de dados abertos, destacando-se dois pontos:
-
-\begin{itemize}
-	\item \textbf{Proveniência}: Através de um registo distribuído de modificações feitas a dados e metadados será possível assegurar a sua autenticidade e não-repúdio relativamente à autoria de quaisquer operações realizadas sobre os dados. Esta prática deve estar presente antes, durante e após a publicação dos conjuntos de dados; quando aplicada antes da publicação, permite rastrear todas as modificações feitas ao longo do tempo, para reduzir situações de \emph{p-hacking}\cite{10.1371/journal.pbio.1002106}, por exemplo. Após a publicação, um registo distribuído de alterações permite aos autores continuar a modificar um conjunto de dados após a publicação do conjunto de dados considerado ``final'', de forma completamente transparente. Uma outra vantagem é a resiliência do sistema, pois mesmo que o repositório onde um conjunto de dados está publicado seja desligado, esse historial de modificações continuará registado nos restantes nós da \emph{blockchain}.
-	\item \textbf{Fiabilidade de resultados}: Regra geral, um valor só é registado na \emph{blockchain} se existir um consenso na rede de computadores que colaboram nessa \emph{blockchain}. Este mecanismo pode ser usado para atestar a reprodutibilidade das operações de transformação realizadas sobre um conjunto de dados. Neste caso em particular, só após um determinado número de nós (dependendo da política em vigor na \emph{blockchain}) levarem a cabo as mesmas operações e confirmarem os resultados é que é criado o \emph{consenso} necessário à escrita para a \emph{blockchain}, passando aquela operação a fazer parte do historial de operações sobre aquele conjunto de dados. 
-\end{itemize}
-
-
-\section{Visão geral de funcionalidades}
-
-Existem diferentes alternativas para a montagem de um repositório de dados. Uma análise comparativa produzida pelo projeto Dataverse\footnote{Ligação:  \url{https://dataverse.org/blog/comparative-review-various-data-repositories}} apresenta uma comparação das principais plataformas de repositórios de dados, tendo em conta três grupos de facetas: Funcionalidades de Software, Controlo/Organização e Conteúdo. Uma outra comparação~\cite{amorimComparison2017} discute em mais profundidade algumas características técnicas de diversas plataformas. Esta análise foca-se apenas nas alternativas disponíveis em regime de código aberto e instaláveis localmente, de forma a poder retirar conclusões relativamente ao modelo de dados por detrás de cada solução de software. 
-
-Tão importante como comparar funcionalidades oferecidas pelas plataformas é estudar quais funcionalidades são mais valorizadas pelos utilizadores destas plataformas. Para responder a esta questão, o Grupo de Interesse das Plataformas de Gestão de Dados de Investigação (RPRD IG) da Research Data Alliance (RDA) compilou uma Matriz de Casos de Uso e Requisitos Funcionais para as Plataformas de Gestão de Dados de Investigação. Esta matriz resultou de um inquérito a 11 grupos que apresentaram os seus casos de uso para repositórios de dados de investigação. Cada um destes grupos classificou a importância de 26 requisitos vulgarmente associados a um repositório de dados. No final, foi atribuída uma pontuação a cada um dos requisitos funcionais, com base na importância que a totalidade dos grupos lhe atribuiu no contexto do seu caso de uso.
-
-De forma a comparar de forma sucinta algumas das plataformas mais utilizadas, é necessário considerar não só a quantidade e variedade de funcionalidades como também a sua importância para a maioria dos utilizadores. Assim, na Figura~\ref{comparacao_repos} apresenta-se não só uma pontuação de funcionalidades, como também algumas das principais características dessas plataformas. Nesta figura, apresenta-se primeiramente um gráfico de barras que ordena as plataformas de acordo com uma ``Pontuação de funcionalidades''. Esta foi determinada associando manualmente os requisitos funcionais da RDA às características listadas na comparação de repositórios apresentada pela DataVerse, e calculando o produto de cada relação estabelecida pela importância dada ao requisito pela RDA. Desta forma, foi possível atribuir diferentes \emph{pesos} às características desta última comparação~\footnote{Os dados base deste estudo estão disponíveis no repositório GitHub deste relatório, como materiais auxiliares. Ligação: \url{https://github.com/silvae86/repositories-paper-eda}}. 
-
-\begin{figure*}[h!t!]
-\centering
-\includegraphics[width=0.95\textwidth]{Sources/DataverseComparativeReview/plot.pdf}
-\caption{Análise comparativa de diferentes plataformas de \emph{software} para repositórios de dados}
-\end{figure*}
-
-A figura apresenta também uma tabela com algumas características mais relevantes de cada plataforma:
-
-\begin{itemize}
-	\item \textbf{Código Aberto}\\
-	Na primeira linha distinguem-se as soluções que estão disponíveis em regime de código aberto daquelas em que não é o caso. O facto do código de uma solução estar disponível em acesso aberto tem inúmeras vantagens, desde que haja uma comunidade disposta a manter esse software. Exemplos são uma maior segurança, pois o facto do código ser aberto facilita a correção rápida de falhas de segurança por parte da comunidade, ao invés de ter que esperar pela correção por parte da equipa de uma empresa. Qualquer pessoa tem também a liberdade de modificar e melhorar o software para satisfazer uma determinada necessidade, sendo que esses melhoramentos poderão potencialmente ser incluídos no tronco comum da solução, caso se verifique que o requisito se verifica em outras comunidades e os desenvolvedores assim o entenderem. Esta flexibilidade pode proporcionar um ritmo e velocidade de desenvolvimento mais elevado do que as soluções proprietárias, que têm equipas de desenvolvimento limitadas; contudo, a própria comunidade de desenvolvimento é responsável pela manutenção da qualidade do código. O modelo de código aberto não invalida a hipótese das entidades que suportam um repositório realizarem alterações pagas ao código, num cenário semelhante à consultoria de implementação do repositório. Nestes casos, o ``produto'' em si não é o software, mas sim o serviço de instalação e personalização da solução de código aberto numa determinada instituição. De qualquer forma, o código desenvolvido no contexto destas implementações pode também ser incluído no tronco comum, beneficiando toda a comunidade que utiliza esse software. É também normal encontrar nos projetos de software open-source um conjunto de fóruns públicos onde os utilizadores podem propor melhorias ao software e reportar \textit{bugs}.
-	\item \textbf{Grátis} 
-	Quase todas as soluções em análise são completamente grátis ou oferecem um nível de serviço base grátis. Os sistemas que funcionam com base na cloud incluem normalmente uma capacidade de armazenamento de dados limitada, sendo que os utilizadores podem adquirir um pacote de armazenamento maior se necessitarem. As soluções que podem ser instaladas localmente apenas dependem da capacidade de armazenamento do servidor no qual são instaladas.
-	\item \textbf{Número de conjuntos de dados, ficheiros e utilizadores}
-	O número de recursos geridos pelas plataformas e o número de utilizadores que confiam nessas plataformas para a sua gestão de dados é uma importante métrica da sua maturidade. 
-	\item \textbf{Certificação}
-	A certificação de repositórios continuará a assumir relevância aquando da adoção de uma solução de repositório. No caso das soluções SaaS, a certificação do repositório pode beneficiar todas as instituições que contratem os serviços dessas plataformas, pois todos os seus investigadores poderão mencionar esse aspeto na escrita dos DMP que anexam às suas propostas de projetos. As soluções SaaS têm portanto todo o interesse em procurar a certificação para oferecer mais valor aos seus clientes. No caso das alternativas instaladas e mantidas localmente, as funcionalidades da solução de software em particular não são condição suficiente para a certificação. Contudo, as funcionalidades da plataforma a seleccionar não devem impedir a futura certificação do repositório. 
-	\item \textbf{Infraestrutura} 
-	Esta categoria distingue as plataformas que só estão disponíveis como SaaS daquelas que podem também ser instaladas e geridas localmente.
-\end{itemize}
-
-Por fim, é necessário considerar o modelo de hospedagem ou infraestrutura do repositório, que está geralmente ligado ao modelo de negócio das entidades que o suportam. Neste domínio, existem as soluções SaaS\footnote\emph{{Software as a Service}}, que podem ser vistos como ``chave-na-mão''. Nestes modelos, toda a infraestrutura e serviços por detrás da página web do repositório (alojamento, manutenção, assistência técnica, curadoria ou atribuição de identificadores) faz parte de um pacote oferecido às instituições interessadas nesse repositório. Em alternativa, apresentam-se as soluções alojadas localmente, que diferem das soluções SaaS na medida em que exigem instalação e manutenção por parte de uma equipa de TI interna à organização. Da mesma forma, o trabalho de curadoria na plataforma também tem que ser levado a cabo inteiramente pelos elementos da organização e geralmente não existe nenhuma obrigação de assistência por parte dos desenvolvedores do software. 
-
-\section{Discussão e conclusões}
+\section{Discussão e conclusões} % (fold)
+\label{sec:discussao_e_conclusoes}
 
 % Descentralização
 % Versionamento de datasets
@@ -379,14 +412,16 @@ A oferta de capacidades de computação sobre os dados depositados num repositó
 
 Por último, e em jeito de conclusão, a tecnologia desempenha um papel essencial no suporte à reprodutibilidade dos resultados apresentados nas publicações. Contudo, essa mesma tecnologia não pode nunca substituir o papel dos curadores de dados. O investimento na implementação de um repositório deve assim ser alicerçado num igual investimento na formação dos responsáveis pela gestão dos dados de investigação. São esses peritos que levam a cabo o suporte aos investigadores e que conseguem dessa forma criar um clima de confiança no processo de gestão de dados e dessa forma salientar a proposta de valor da plataforma de repositório que o sustenta.
 
+% section discussao_e_conclusoes (end)
+
 %%
 %% The acknowledgments section is defined using the "acks" environment
 %% (and NOT an unnumbered section). This ensures the proper
 %% identification of the section in the article metadata, and the
 %% consistent spelling of the heading.
-%\begin{acks}
-%O autor agradece o convite para participar no grupo de trabalho %Estratégia para os Dados Abertos.
-%\end{acks}
+\begin{acks}
+O autor agradece o convite para participar no grupo de trabalho para a Estratégia para os Dados Abertos, e convida todos os leitores deste artigo a submeter revisões e correções no repositório GitHub deste artigo~\footnote{Ligação: \url{https://github.com/silvae86/repositories-paper-eda}}.
+\end{acks}
 
 %%
 %% The next two lines define the bibliography style to be used, and
