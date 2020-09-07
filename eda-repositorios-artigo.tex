@@ -201,32 +201,74 @@ Para além dos princípios FAIR, que se apresentam como linhas gerais para aquil
 
 De acordo com o Guião Estratégico de Implementação (GEI) da EOSC (European Open Science Cloud), a certificação de repositórios de dados é uma parte essencial na visão a longo prazo da Comissão Europeia. Os processos de certificação são exaustivos e requerem não só excelência técnica como também um compromisso a longo prazo das instituições que os suportam. 
 
+De um ponto de vista mais económico e de soberania dos dados, a certificação de repositórios assumirá um papel cada vez mais importante no funcionamento de uma instituição académica ou de investigação. Existem diversas razões, de entre as quais se destaca o crescente número de entidades financiadoras e publicações de renome que exigem a disponibilização dos dados-base e do código-fonte que sustenta as publicações. Neste cenário, a qualidade dos repositórios onde tais recursos são disponibilizados terá necessariamente que ser elevada. Desta forma, a certificação tornar-se-à assim uma pedra fundamental no suporte aos projetos de investigação, pois as instituições terão que assegurar aos seus investigadores a satisfação dos presentes e futuros requisitos de financiadores aquando da escrita dos planos de gestão de dados a anexar às propostas de financiamento. Essas instituições terão então duas opções para garantir os requisitos: ou embarcam num processo de certificação dos seus próprios repositórios institucionais, ou terão que subcontratar o processo de depósito e curadoria de dados a um repositório certificado. Levada a cabo a certificação, contudo, o repositório poderá tornar-se uma fonte de receita para as instituições que os suportam, pois oferece um valor acrescentado caso essas instituições queiram oferecer um serviço de preservação a longo prazo como um serviço~\cite{Lindlar_Schwab_2019}.
+
+A certificação é um processo custoso e demorado que constitui um projeto por si só. A título de exemplo, o TIB Leibniz Information Centre for Science and Technology, que reportou os resultados das suas certificações DSA e nestor em 2018; os números são apresentados na Tabela~\ref{tab:tib_certification_numbers}.
+
+\begin{table}
+    \caption{Recursos dispendidos na certificação do TIB, para o DSA V.2 e nestor Seal, números~\cite{Lindlar_Schwab_2019}}\label{tab:tib_certification_numbers}
+    \centering
+    \scriptsize
+    \begin{tabular}{|c|c|c|}
+    \textbf{Métrica} & \textbf{DSA} & \textbf{nestor Seal} \\
+	Fee for process & 0 €  & 500€ \\
+    Project Duration (meses) & 9 & 12 \\
+	Pessoas-Mês\footnote{Calculado com base nas regras UE FP5, de 8 horas por dia e 17,5 dias por mês} & 3.7 & 11\\
+	Pessoas envolvidas & 7 & 16\\
+	Unidades organizacionais envolvidas & 5 & 8
+    \end{tabular}
+    \scriptsize
+\end{table}
+
 \subsection{Data Seal of Approval} % (fold)
 \label{sub:data_seal_of_approval}
+
+O Data Seal of Approval (DSA)~\footnote{Ligação: \url{www.datasealofapproval.org}} foi uma iniciativa de certificação de repositórios desenvolvida em 2008 pelo holandês Data Archiving and Networked Services (DANS). Consiste num selo que garante que que dados arquivados num repositório DSA podem ser encontrados, interpretados e usados no futuro. De 2008 a 2018, os requisitos para obtenção do selo passaram por 3 revisões. O DSA foi fundido em 2018 com o CoreTrustSeal, e os repositórios que receberam o DSA para o período 2014-2017 têm que passar novamente pelo processo de certificação para o CoreTrustSeal. Uma lista dos repositórios que obtiveram o DSA durante a sua existência está também disponível~\footnote{Ligação: \url{https://easy.dans.knaw.nl/ui/datasets/id/easy-dataset:116038}}.
 
 % subsection data_seal_of_approval (end)
 
 \subsection{nestorSEAL} % (fold)
 \label{sub:nestorseal}
 
+A nestor (network of expertise in long-term storage of digital resources in Germany) envolve 23 grandes instituições alemãs de investigação e ciência e deu origem a 12 grupos de trabalho. Um grupo de trabalho especializado em certificação mantém o nestorSEAL, uma framework de certificação que garante não só os requisitos do DSA mas também uma certificação mais extensa~\footnote{Ligação: \url{https://www.langzeitarchivierung.de/Webs/nestor/EN/Services/nestor_Siegel/nestor_siegel_node.html}}. 
+
 % subsection nestorseal (end)
 
-\subsection{ISO 16363} % (fold)
-\label{sub:iso_16363}
+\subsection{ISO 16363:2012} % (fold)
+\label{sub:iso_16363_2012}
 
-% subsection iso_16363 (end)
+% TODO JRS
 
-\subsection{Core Trust Seal} % (fold)
+A certificação ISO 16363:2012
+
+Um aspeto que distingue esta certificação da DSA, do nestorSEAL e do CoreTrustSeal é que a única instituição que a fornece, a PTAB\footnote{Primary Trustworthy Digital Repository Authorisation Body}, não obriga as instituições responsáveis pelo repositório certificado a publicar os relatórios de certificação. Consequentemente, até 2018 não havia um relatório sobre o processo de certificação 16363:2012 de nenhum repositório disponível para análise~\cite{Lindlar_Schwab_2019}. A certificação ISO é um processo considerado ``heavyweight'' para a maioria dos repositórios, e até 2018 apenas o National Cultural Audiovisual Archives, na Índia, havia atingido esse objetivo~\cite{Lindlar_Schwab_2019,IndianMinistryofCulture2017}.
+
+% subsection sub:iso_16363_2012 (end)
+
+\subsection{European Framework for Audit and Certification of Digital Repositories} % (fold)
+\label{sub:european_framework_for_audit_and_certification_of_digital_repositories}
+
+A EFACDR (European Framework for Audit and Certification of Digital Repositories) surgiu após a assinatura de um memorando\footnote{Ligação: \url{http://www.trusteddigitalrepository.eu/Memorandum\%20of\%20Understanding.html}} por parte das entidades responsáveis pelo DSA, o CCSDS\footnote{Consultative Committee for Space Data Systems}, e o standard ISO 16364:2012 e também o grupo de trabalho responsável pela DIN\footnote{Deutsches Institut für Normung} 31644. 
+
+Esta framework propõe 3 passos de certificação: a certificação básica de acordo com o DSA, uma ``Extended Certification'' que inclui uma auditoria feita pela própria instituição e avaliada externamente baseada na ISO 16363 ou na DIN 31644. Por fim, o terceiro passo é certificação formal com base nas mesmas normas, mas levada a cabo através de auditoria e certificação externa~\cite{Lindlar_Schwab_2019}.
+
+% subsection european_framework_for_audit_and_certification_of_digital_repositories (end)
+
+\subsection{CoreTrustSeal} % (fold)
 \label{sub:core_trust_seal}
+
+O CoreTrustSeal, lançado em 2017, resulta do trabalho do DSA e do Repository Audit and Certification DSA–WDS Partnership Working Group da RDA. 
+%
+Este processo de certificação é citado nas Recomendações 9 e 13 do relatório da Comissão Europeia para a implementação dos princípios FAIR~\cite{hodson2018turning} como um método de certificação certificado pela comunidade que deve ser usado como base para a avaliação e certificação de serviços FAIR. 
+%
+Á data de escrita deste artigo existem 96 repositórios certificados de acordo com o CoreTrustSeal~\footnote{Ligação: \url{https://www.coretrustseal.org/why-certification/certified-repositories/}}, entre os quais se destaca o Portulan CLARIN a nível nacional~\footnote{Ligação: \url{https://portulanclarin.net/ecosystem/\#certification}}.
 
 % subsection core_trust_seal (end)
 
 
-De um ponto de vista mais económico e de soberania dos dados, a certificação de repositórios assumirá um papel cada vez mais importante no funcionamento de uma instituição académica ou de investigação. Existem diversas razões, de entre as quais se destaca o crescente número de entidades financiadoras e publicações de renome que exigem a disponibilização dos dados-base e do código-fonte que sustenta as publicações. Neste cenário, a qualidade dos repositórios onde tais recursos são disponibilizados terá necessariamente que ser elevada. Desta forma, a certificação tornar-se-à assim uma pedra fundamental no suporte aos projetos de investigação, pois as instituições terão que assegurar aos seus investigadores a satisfação dos presentes e futuros requisitos de financiadores aquando da escrita dos planos de gestão de dados a anexar às propostas de financiamento. Essas instituições terão então duas opções para garantir os requisitos : ou embarcam num processo de certificação dos seus próprios repositórios institucionais, ou subcontratam o processo de depósito e curadoria de dados a um repositório certificado. 
-
 \section{Automatização da gestão de dados}
 
-Qualquer processo de gestão de dados de investigação deve começar com o desenho de um Plano de Gestão de Dados (ou DMP, do inglês Data Management Plan). Um DMP é um documento tipicamente escrito e aprovado antes do início de um projeto de investigação. Em alguns casos, é já requisito obrigatório em chamadas de propostas de projetos de investigação suportados por fundos públicos~\cite{Foundation2011}) e que especifica todos os aspetos relacionados com a gestão dos dados produzidos ao longo do projeto~\cite{}.  
+Qualquer processo de gestão de dados de investigação deve começar com o desenho de um Plano de Gestão de Dados (ou DMP, do inglês Data Management Plan). Um DMP é um documento tipicamente escrito e aprovado antes do início de um projeto de investigação. Em alguns casos, é já requisito obrigatório em chamadas de propostas de projetos de investigação suportados por fundos públicos~\cite{Foundation2011}) e que especifica todos os aspetos relacionados com a gestão dos dados produzidos ao longo do projeto~\cite{10.1371/journal.pcbi.1004525}.  
 
 Entre outros aspetos, que dados serão produzidos no contexto de um projeto, que metadados serão anexados aos dados publicados, onde eles irão ficar disponíveis após o fim do projeto, entre outros pontos. No Reino Unido, o Digital Curation Centre disponibiliza tanto um guião~\cite{jones_dmp} para a escrita deste tipo de documentos como uma ferramenta online, o DMP Online~\footnote{\url{Ligação: https://dmponline.dcc.ac.uk}}, que assiste os investigadores e curadores na elaboração dos seus DMP, assistidos por uma base de dados de templates de DMP aceites por diferentes entidades financiadoras.
 
@@ -260,9 +302,7 @@ O futuro dos repositórios de dados deve passar assim por uma solução híbrida
 
 \subsection{Repositórios como plataformas de computação}
 
-Cada vez mais, o valor de um repositório de dados reside na facilidade de reutilização dos dados nele contidos. Tecnologias recentes como os Research Notebooks e a Containerização permitem tornar os algoritmos mais portáteis portáteis, de forma a poderem ser executados remotamente sobre os dados depositados num repositório. O papel deste torna-se assim muito mais do que o de simples armazenista, indexador e recuperador de pacotes de dados.
-
-É muito comum descobrir conjuntos de dados que, apesar de publicados e devidamente descritos com metadados completos, não são interpretáveis ou reproduzíveis quando um investigador tenta repetir os passos experimentais reportados num artigo de investigação\cite{}. 
+Cada vez mais, o valor de um repositório de dados reside na facilidade de reutilização dos dados nele contidos. Tecnologias recentes como os Research Notebooks e a Containerização permitem tornar os algoritmos mais portáteis portáteis, de forma a poderem ser executados remotamente sobre os dados depositados num repositório. O papel deste torna-se assim muito mais do que o de simples armazém combinado com um motor de busca sobre conjuntos de dados.
 
 Os Research Notebooks são cadernos de laboratório interactivos que encerram em si os dados-base, código de processamento que transforma os dados base em dados processados, e até mesmo visualizações e gráficos gerados na hora com base nos dados e no código do Notebook.
 
@@ -270,7 +310,7 @@ Os Notebooks vêm também possibilitar suportar uma dos maiores mudanças no par
 
 Com o problema do empacotamento do processamento e dos dados a ser abordado pelos Notebooks, resta o problema de onde realizar a execução desses algoritmos. Nem todos os conjuntos de dados se prestam a ser transportados pela rede em tempo útil para a execução de um determinado algoritmo, pois em certas disciplinas o seu tamanho pode ascender a centenas de gigabytes ou mesmo terabytes. Assim sendo, é necessário levar a computação até aos dados em vez de ter que transmitir os dados até ao local onde se realiza a computação. Este tipo de computação que ocorre junto dos dados é um paradigma é implementado em portais de computação como o D4Science~\footnote{Ligação: \url{https://www.d4science.org}} ou o EUDAT B2Stage\footnote{Ligação: \url{https://www.eudat.eu/b2stage}}. Com a esperada descentralização e interoperabilidade que se espera dos repositórios de dados defendida pelo GEI da EOSC, espera-se que cada repositório seja capaz de oferecer capacidade de computação local a pequena escala e junto das fontes de dados. Este cenário é mais próximo do \emph{edge computing}, um termo mais vulgarmente associado às aplicações IoT. Por contraponto ao \emph{cloud computing}, onde todos os recursos se encontram na nuvem e os dados têm que ser cuidadosamente aproximados dos nós de computação (mesmo em termos geográficos) para reduzir tráfego na rede, o \emph{edge computing} defende que cada nó da rede deve ter uma pequena mas importante capacidade de computação para executar operações à medida que os dados são produzidos ou atualizados. 
 
-Quando se fala de distribuição de computação e reproducibilidade, surge imediatamente a necessidade de replicar também todo o ambiente de execução no qual essa computação é executada. Sem uma solução de virtualização, isso implica a instalação de um sistema operativo e de todas as dependências relevantes para a execução do código relevante. Este é um processo manual e dispendioso que torna claramente necessário assegurar a portabilidade do ambiente de execução, tornando-o instalável automaticamente em qualquer nó com o mínimo de dependências. 
+Quando se fala de distribuição de computação e reprodutibilidade, surge imediatamente a necessidade de replicar também todo o ambiente de execução no qual essa computação é executada. Sem uma solução de virtualização, isso implica a instalação de um sistema operativo e de todas as dependências relevantes para a execução do código relevante. Este é um processo manual e dispendioso que torna claramente necessário assegurar a portabilidade do ambiente de execução, tornando-o instalável automaticamente em qualquer nó com o mínimo de dependências. 
 
 A containerização é uma tecnologia de virtualização que, quando comparada com as máquinas virtuais convencionais, elimina a necessidade de virtualizar um sistema operativo para executar um determinado programa, substituindo essas dependências por um ambiente de execução (ou \textit{runtime}) próprio. O exemplo mais comum de ambiente de virtualização é o Docker\footnote{Ligação: \url{https://www.docker.com/}}. Esta eficiência torna possível a um repositório de dados executar algoritmos directamente sobre os dados nele depositados e retornar apenas os resultados aos clientes que pedem esses processamentos, em vez de exigir a descarga dos dados para o cliente. Talvez a funcionalidade mais interessante para um repositório de dados é a possibilidade de especificar todos os passos de instalação de dependências necessárias à execução dos algoritmos de processamento de dados, reduzindo em larga medida os problemas de replicação do ambiente de execução de determinado algoritmo.
 
@@ -280,7 +320,7 @@ Num futuro de repositórios de dados descentralizados e interligados num ambient
 
 \begin{itemize}
 	\item \textbf{Proveniência}: Através de um registo distribuído de modificações feitas a dados e metadados será possível assegurar a sua autenticidade e não-repúdio relativamente à autoria de quaisquer operações realizadas sobre os dados. Esta prática deve estar presente antes, durante e após a publicação dos conjuntos de dados; quando aplicada antes da publicação, permite rastrear todas as modificações feitas ao longo do tempo, para reduzir situações de \emph{p-hacking}\cite{10.1371/journal.pbio.1002106}, por exemplo. Após a publicação, um registo distribuído de alterações permite aos autores continuar a modificar um conjunto de dados após a publicação do conjunto de dados considerado ``final'', de forma completamente transparente. Uma outra vantagem é a resiliência do sistema, pois mesmo que o repositório onde um conjunto de dados está publicado seja desligado, esse historial de modificações continuará registado nos restantes nós da \emph{blockchain}.
-	\item \textbf{Fiabilidade de resultados}: Regra geral, um valor só é registado na \emph{blockchain} se existir um consenso na rede de computadores que colaboram nessa \emph{blockchain}. Este mecanismo pode ser usado para atestar a reproducibilidade das operações de transformação realizadas sobre um conjunto de dados. Neste caso em particular, só após um determinado número de nós (dependendo da política em vigor na \emph{blockchain}) levarem a cabo as mesmas operações e confirmarem os resultados é que é criado o \emph{consenso} necessário à escrita para a \emph{blockchain}, passando aquela operação a fazer parte do historial de operações sobre aquele conjunto de dados. 
+	\item \textbf{Fiabilidade de resultados}: Regra geral, um valor só é registado na \emph{blockchain} se existir um consenso na rede de computadores que colaboram nessa \emph{blockchain}. Este mecanismo pode ser usado para atestar a reprodutibilidade das operações de transformação realizadas sobre um conjunto de dados. Neste caso em particular, só após um determinado número de nós (dependendo da política em vigor na \emph{blockchain}) levarem a cabo as mesmas operações e confirmarem os resultados é que é criado o \emph{consenso} necessário à escrita para a \emph{blockchain}, passando aquela operação a fazer parte do historial de operações sobre aquele conjunto de dados. 
 \end{itemize}
 
 
@@ -308,14 +348,14 @@ A figura apresenta também uma tabela com algumas características mais relevant
 	\item \textbf{Número de conjuntos de dados, ficheiros e utilizadores}
 	O número de recursos geridos pelas plataformas e o número de utilizadores que confiam nessas plataformas para a sua gestão de dados é uma importante métrica da sua maturidade. 
 	\item \textbf{Certificação}
-	A certificação de repositórios continuará a assumir relevância aquando da adoção de uma solução de repositório. No caso das soluções SaaS, a certificação do repositório pode beneficiar todas as instituições que contratem os serviços dessas plataformas, pois todos os seus investigadores poderão mencionar esse aspeto na escrita dos DMP que anexam às suas propostas de projetos. Ao mesmo tempo, as soluções SaaS têm todo o interesse em procurar a certificação, pois pode oferecer mais valor aos seus clientes e pode ser determinante para a adoção das suas soluções. No caso das alternativas instaladas e mantidas localmente, e apesar de uma solução de software em particular não a
-	
-	% TODO continuar JRS
+	A certificação de repositórios continuará a assumir relevância aquando da adoção de uma solução de repositório. No caso das soluções SaaS, a certificação do repositório pode beneficiar todas as instituições que contratem os serviços dessas plataformas, pois todos os seus investigadores poderão mencionar esse aspeto na escrita dos DMP que anexam às suas propostas de projetos. As soluções SaaS têm portanto todo o interesse em procurar a certificação para oferecer mais valor aos seus clientes. No caso das alternativas instaladas e mantidas localmente, as funcionalidades da solução de software em particular não são condição suficiente para a certificação. Contudo, as funcionalidades da plataforma a seleccionar não devem impedir a futura certificação do repositório. 
+	\item \textbf{Infraestrutura} 
+	Esta categoria distingue as plataformas que só estão disponíveis como SaaS daquelas que podem também ser instaladas e geridas localmente.
 \end{itemize}
 
 Por fim, é necessário considerar o modelo de hospedagem ou infraestrutura do repositório, que está geralmente ligado ao modelo de negócio das entidades que o suportam. Neste domínio, existem as soluções SaaS\footnote\emph{{Software as a Service}}, que podem ser vistos como ``chave-na-mão''. Nestes modelos, toda a infraestrutura e serviços por detrás da página web do repositório (alojamento, manutenção, assistência técnica, curadoria ou atribuição de identificadores) faz parte de um pacote oferecido às instituições interessadas nesse repositório. Em alternativa, apresentam-se as soluções alojadas localmente, que diferem das soluções SaaS na medida em que exigem instalação e manutenção por parte de uma equipa de TI interna à organização. Da mesma forma, o trabalho de curadoria na plataforma também tem que ser levado a cabo inteiramente pelos elementos da organização e geralmente não existe nenhuma obrigação de assistência por parte dos desenvolvedores do software. 
 
-\section{O futuro dos repositórios de dados}
+\section{Discussão e conclusões}
 
 % Descentralização
 % Versionamento de datasets
@@ -324,7 +364,6 @@ Por fim, é necessário considerar o modelo de hospedagem ou infraestrutura do r
 % APIs extensas para suportar operações de machine actionable dmps
 % Computação
 
-\section{Discussão e conclusões}
 
 Os princípios FAIR para a gestão de dados de investigação, e mais recentemente os princípios TRUST, assumem-se como as linhas orientadoras para o desenho de fluxos de trabalho de gestão de dados, nos quais o repositório se assume como a pedra fundamental. Enquanto que os primeiros se focam nas boas práticas necessárias para a reutilização de conjuntos de dados, os segundos orientam a construção e manutenção de repositórios de dados confiáveis.
 
@@ -338,7 +377,7 @@ A atribuição de crédito pelo trabalho de produção e descrição correta de 
 
 A oferta de capacidades de computação sobre os dados depositados num repositório requer a ligação entre os dados e plataformas de computação como por exemplo os Jupyter Research Notebooks. Desta forma, o repositório guardará não só os dados mas também os processos de análise desses dados que sustenta às conclusões publicadas. Torna-se também mais fácil para terceiros re-executar esses passos, pois reduz-se o número de dependências a instalar para recuperar o seu contexto de execução.
 
-Por último, e em jeito de conclusão, a tecnologia desempenha um papel essencial no suporte à reproducibilidade dos resultados apresentados nas publicações. Contudo, essa mesma tecnologia não pode nunca substituir o papel dos curadores de dados. O investimento na implementação de um repositório deve assim ser alicerçado num igual investimento na formação dos responsáveis pela gestão dos dados de investigação. São esses peritos que levam a cabo o suporte aos investigadores e que conseguem dessa forma criar um clima de confiança no processo de gestão de dados e por consequência forma salientar a proposta de valor de qualquer solução tecnológica que o sustente.
+Por último, e em jeito de conclusão, a tecnologia desempenha um papel essencial no suporte à reprodutibilidade dos resultados apresentados nas publicações. Contudo, essa mesma tecnologia não pode nunca substituir o papel dos curadores de dados. O investimento na implementação de um repositório deve assim ser alicerçado num igual investimento na formação dos responsáveis pela gestão dos dados de investigação. São esses peritos que levam a cabo o suporte aos investigadores e que conseguem dessa forma criar um clima de confiança no processo de gestão de dados e dessa forma salientar a proposta de valor da plataforma de repositório que o sustenta.
 
 %%
 %% The acknowledgments section is defined using the "acks" environment
