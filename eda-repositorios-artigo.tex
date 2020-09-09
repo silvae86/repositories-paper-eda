@@ -146,9 +146,13 @@
 
 \section{Introdução}
 
-Os princípios FAIR para a gestão de dados de investigação especificam que os dados devem ser Findable (encontráveis), Accessible (acessíveis), Interoperable (interoperáveis) and Reusable (reutilizáveis)~\cite{wilkinson2016fair}. Recentemente, um grupo de peritos da Comissão Europeia estudou as melhores práticas para tornar os dados de investigação europeus mais FAIR, tendo concluído que os componentes essenciais de um ecossistema FAIR são: políticas, planos de gestão de dados (DMP), identificadores, normas e repositórios~\cite{hodson2018turning}. %TODO JRS
+Os princípios FAIR para a gestão de dados de investigação especificam que os dados devem ser Findable (encontráveis), Accessible (acessíveis), Interoperable (interoperáveis) and Reusable (reutilizáveis)~\cite{wilkinson2016fair}. Recentemente, um grupo de peritos da Comissão Europeia estudou as melhores práticas para tornar os dados de investigação europeus mais FAIR, tendo concluído que os componentes essenciais de um ecossistema FAIR são: políticas, planos de gestão de dados (DMP), identificadores, normas e repositórios~\cite{hodson2018turning}. 
 
-Assiste-se presentemente a uma automação cada vez maior dos processos de gestão de dados, impulsionada pela grande quantidade e diversidade dos dados produzidos pelos investigadores. Os planos de gestão de dados acionáveis por máquinas (maDMP) apresentam-se como um documento vivo e interpretável por máquinas, reduzindo a necessidade de intervenção humana na execução e auditoria das práticas de gestão de dados a que os investigadores se comprometem aquando da submissão de uma proposta de projeto. 
+Sendo esta análise mais focada nos aspetos técnicos ligados às plataformas de repositórios, o aspeto político não será a tónica principal, mas ressalva-se contudo que as decisões políticas devem ser informadas pelas capacidades técnicas das plataformas disponíveis---é aliás nesse sentido que se este artigo se posiciona. 
+
+Falando de planos de gestão de dados, assiste-se presentemente a uma automação cada vez maior dos processos de gestão de dados, impulsionada pela grande quantidade e diversidade dos dados produzidos pelos investigadores. Os planos de gestão de dados consistem vulgarmente em documentos escritos, acrescentados às propostas de projetos de investigação. Mais recentemente, têm sido desenvolvidos esforços no sentido de os tornar acionáveis por máquinas, dando origem aos maDMP (machine-actionable Data Management Plan). Estes apresentam-se como um documento vivo e interpretável por máquinas,  reduzindo a necessidade de intervenção humana na execução e auditoria das práticas de gestão de dados a que os investigadores se comprometem aquando da submissão de uma proposta de projeto. Os respositórios devem assim caminhar no sentido de suportar as operações necessárias à execução de maDMP. 
+
+Os identificadores são uma parte essencial dos metadados acrescentados aos conjuntos de dados, pois permitem a recuperação e identificação inequívoca de diferentes conjuntos de dados. Há muitos sistemas de identificadores por onde escolher, e a selecção destes últimos deve ser controlada por normas. Estas normas devem, por sua vez, ser adotadas com vista à certificação do repositório, de maneira a aumentar o valor acrescentado para todas as partes interessadas desse repositório. Os próprios processos de certificação foram evoluindo com o passar dos anos, e as histórias de sucessoss passados no que toca a estes processos criteriosos e dispendiosos devem ser tidas em conta aquando da seleção de uma plataforma de software para um repositório.
 
 Este artigo contém 5 secções para além desta introdução. A secção~\ref{sec:o_papel_do_repositorio_na_aplicacao_dos_principios_fair} apresenta uma análise de alto nível dos requisitos a satisfazer por um repositório de dados, tendo os princípios FAIR como linhas orientadoras. 
 %
@@ -355,11 +359,13 @@ A nestor (network of expertise in long-term storage of digital resources in Germ
 \subsection{ISO 16363:2012} % (fold)
 \label{sub:iso_16363_2012}
 
-% TODO JRS
+A certificação ISO 16363:2012 assume-se como a mais exigente e valiosa, mas também a dispendiosa e demorada de obter. Nem todos os repositórios devem procurar esta certificação, pois como diz o Implementation Guide da EOSC, ``um repositório deve procurar o nível de certificação apropriado e alcançável''\cite{hodson2018turning}. A certificação ISO é um processo considerado ``heavyweight'' para a maioria dos repositórios, e até 2018 apenas o National Cultural Audiovisual Archives, na Índia, havia atingido esse objetivo~\cite{Lindlar_Schwab_2019,IndianMinistryofCulture2017}.
 
-A certificação ISO 16363:2012 
+Uma auditoria interna nacional realizada em 2015 analisou 24 repositórios alojados pelo SARI\footnote{Serviço de Alojamento de Repositórios Institucionais} do RCAAP\footnote{Repositório Científico de Acesso Aberto de Portugal}, de acordo com as três dimensões da norma: infraestrutura organizacional, gestão de objetos e infraestrutura de gestão e segurança. 
 
-Um aspeto que distingue esta certificação da DSA, do nestorSEAL e do CoreTrustSeal é que a única instituição que a fornece, a PTAB\footnote{Primary Trustworthy Digital Repository Authorisation Body}, não obriga as instituições responsáveis pelo repositório certificado a publicar os relatórios de certificação. Consequentemente, até 2018 não havia um relatório sobre o processo de certificação 16363:2012 de nenhum repositório disponível para análise~\cite{Lindlar_Schwab_2019}. A certificação ISO é um processo considerado ``heavyweight'' para a maioria dos repositórios, e até 2018 apenas o National Cultural Audiovisual Archives, na Índia, havia atingido esse objetivo~\cite{Lindlar_Schwab_2019,IndianMinistryofCulture2017}.
+Durante esta auditoria, e dado que a ISO 16236:2012 não especifica uma escala de maturidade para o cumprimento dos requisitos nela especificados, foi adotada uma escala baseada no modelo ECM3~\cite{Katuu2013}. A auditoria concluiu que a média do grau de conformidade dos repositórios analisados foi de 2.0 de um máximo de 5.0, tendo o ponto mais fraco sido a Sustentabilidade Financeira, com uma pontuação média de 1.39, e o ponto mais forte sido a Estrutura Governativa e Viabilidade Organizacional, com uma pontuação de 2.33~\cite{Carvalho2014}. 
+
+Um aspeto que distingue esta certificação da DSA, do nestorSEAL e do CoreTrustSeal é que a única instituição que a fornece, a PTAB\footnote{Primary Trustworthy Digital Repository Authorisation Body}, não obriga as instituições responsáveis pelo repositório certificado a publicar os relatórios de certificação. Consequentemente, até 2018 não havia um relatório sobre o processo de certificação 16363:2012 de nenhum repositório disponível para análise~\cite{Lindlar_Schwab_2019}. 
 
 % subsection sub:iso_16363_2012 (end)
 
@@ -377,7 +383,7 @@ Esta framework propõe 3 passos de certificação: a certificação básica de a
 
 O CoreTrustSeal, lançado em 2017, resulta do trabalho do DSA e do Repository Audit and Certification DSA–WDS Partnership Working Group da RDA. 
 %
-Este processo de certificação é citado nas Recomendações 9 e 13 do relatório da Comissão Europeia para a implementação dos princípios FAIR~\cite{hodson2018turning} como um método de certificação certificado pela comunidade que deve ser usado como base para a avaliação e certificação de serviços FAIR. 
+Este processo de certificação é citado nas Recomendações 9 e 13 do relatório da Comissão Europeia para a implementação dos princípios FAIR~\cite{hodson2018turning} como um método de certificação certificado pela comunidade que deve ser usado como base para a avaliação e certificação de serviços FAIR. Tendo em conta estas referências, e caso não existam requisitos dos stakeholders que obriguem á procura de uma certificação ISO, esta deve ser a certificação que a maioria dos repositórios institucionais deve procurar obter, pelo seu equilíbrio entre prestígio e esforço na sua obtenção.
 %
 Á data de escrita deste artigo existem 96 repositórios certificados de acordo com o CoreTrustSeal~\footnote{Ligação: \url{https://www.coretrustseal.org/why-certification/certified-repositories/}}, entre os quais se destaca o Portulan CLARIN a nível nacional~\footnote{Ligação: \url{https://portulanclarin.net/ecosystem/\#certification}}.
 
