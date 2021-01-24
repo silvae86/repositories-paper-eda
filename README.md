@@ -4,7 +4,7 @@ Um position paper sobre plataformas de repositórios de dados elaborado no conte
 Shield: [![CC BY-SA 4.0][cc-by-sa-shield]][cc-by-sa]
 
 This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0
-International License][cc-by-sa]. Read more about what this licence allows and requires [here](https://choosealicense.com/licenses/cc-by-sa-4.0/). 
+International License][cc-by-sa]. Read more about what this license allows and requires [here](https://choosealicense.com/licenses/cc-by-sa-4.0/). 
 
 [![CC BY-SA 4.0][cc-by-sa-image]][cc-by-sa]
 
